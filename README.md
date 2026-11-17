@@ -2,6 +2,8 @@
 
 HopeChestCore ist eine Windows-App, die nach dem Match Truhen aus lokal gespeicherten Fortnite-Replays zählt. Sie unterstützt reguläres Battle Royale und Zero Build.
 
+Der Quellcode zu v0.4.0 ist auf GitHub einsehbar. Der Einstiegspunkt für den Lesezugriff auf Replays ist [`ReplayAnalysis.cs`](ReplayAnalysis.cs).
+
 [**Windows-ZIP v0.4.0 herunterladen**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.4.0/HopeChestCore_v0.4.0.zip) · [Alle Releases](https://github.com/AsheraNo/HopeChestCore/releases)
 
 ## Fair Play und Zugriff auf Fortnite
@@ -41,10 +43,17 @@ HopeChestCore ist ein inoffizielles Fan-Tool und steht in keiner Verbindung zu E
 
 Die Statistik hängt davon ab, welche Ereignisse Fortnite im Replay aufgezeichnet hat. Ereignisse außerhalb deiner Nähe können fehlen, insbesondere bei Teammitgliedern. Änderungen am Replay-Format können die Auswertung beeinträchtigen und ein Update des Parsers erfordern.
 
-## Quellcode und Lizenzen
+## Aus dem Quellcode bauen
 
-Der C#-Quellcode, die Build-Anleitung und die Lizenztexte liegen im Ordner `Quellcode` der Windows-ZIP.
+Führe im Projektordner mit installiertem .NET 10 SDK aus.
 
-Die Replay-Analyse basiert auf Fortnite-ChestCounter 1.5.1 (LED-N, MIT, Stand `1ec3636`) und dessen Fork von FortniteReplayDecompressor (Shiqan, MIT). Die MIT-Lizenztexte liegen dort unter `vendor/`.
+```powershell
+dotnet build -c Release
+dotnet publish -c Release -r win-x64 --self-contained false
+```
 
-Der enthaltene OozSharp-Dekompressor übernimmt Code von Powzix unter GPL-3.0-or-later. Die kombinierte Fassung von HopeChestCore wird unter GPL-3.0-or-later bereitgestellt. Der GPL-Lizenztext liegt unter `Quellcode/vendor/LICENSE-OozSharp-GPL-3.0` in der Windows-ZIP.
+## Lizenzen und Danksagung
+
+Die Replay-Analyse basiert auf Fortnite-ChestCounter 1.5.1 (LED-N, MIT, Stand `1ec3636`) und dessen Fork von FortniteReplayDecompressor (Shiqan, MIT). Die MIT-Lizenztexte liegen unter [`vendor/`](vendor/).
+
+Der enthaltene OozSharp-Dekompressor übernimmt Code von Powzix unter GPL-3.0-or-later. Die kombinierte Fassung von HopeChestCore wird unter GPL-3.0-or-later bereitgestellt. Der [GPL-Lizenztext](vendor/LICENSE-OozSharp-GPL-3.0) liegt im Repository.
