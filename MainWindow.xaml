@@ -287,6 +287,28 @@
                                     <Setter Property="Foreground" Value="{StaticResource Ink}"/>
                                     <Setter Property="Padding" Value="0,4"/>
                                     <Setter Property="ToolTip" Value="{Binding ReplayFile}"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <Border x:Name="MatchRow" Background="Transparent" BorderBrush="Transparent"
+                                                        BorderThickness="0,0,0,1" Padding="{TemplateBinding Padding}">
+                                                    <GridViewRowPresenter Content="{TemplateBinding Content}"
+                                                                          Columns="{TemplateBinding GridView.ColumnCollection}"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="MatchRow" Property="Background" Value="#393658"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="MatchRow" Property="Background" Value="#4B446F"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                                        <Setter TargetName="MatchRow" Property="BorderBrush" Value="{StaticResource Focus}"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
                                 </Style>
                             </ListView.Resources>
                             <ListView.View>
@@ -369,14 +391,14 @@
                     <Border DockPanel.Dock="Bottom" Style="{StaticResource Card}" Background="#393359" BorderBrush="#62567A"
                             Padding="12,9" Margin="0,8,0,0">
                         <Grid>
-                            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="260"/></Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="1.1*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
                             <StackPanel Margin="0,0,15,0">
                                 <TextBlock Text="{DynamicResource CombinedLuck}" FontSize="17" FontWeight="SemiBold" TextWrapping="Wrap"/>
-                                <TextBlock Text="{DynamicResource CombinedAssumption}" Style="{StaticResource MetricLabel}"
+                                <TextBlock x:Name="LuckSummaryDescription" Style="{StaticResource MetricLabel}"
                                            TextWrapping="Wrap" Margin="0,3,0,0"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <TextBlock x:Name="LuckSummaryValue" FontSize="21" FontWeight="SemiBold" Foreground="{StaticResource Gold}"
+                                <TextBlock x:Name="LuckSummaryValue" FontSize="19" FontWeight="SemiBold" Foreground="{StaticResource Gold}"
                                            TextWrapping="Wrap" TextAlignment="Right" AutomationProperties.LiveSetting="Polite"/>
                                 <TextBlock x:Name="LuckSummaryHint" Style="{StaticResource MetricLabel}" TextWrapping="Wrap" TextAlignment="Right"/>
                             </StackPanel>

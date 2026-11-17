@@ -1,0 +1,1512 @@
+{
+  "schema": "hopechestcore-luck-comparisons-v1",
+  "generatedOn": "2026-11-17",
+  "descriptionDe": "Vergleichswerte für 1-zu-X-Wahrscheinlichkeiten. Rechenbeispiele sind als Modellwerte gekennzeichnet, Schätzungen mit Kontext.",
+  "descriptionEn": "Comparisons for one-in-X probabilities. Calculated examples are model-based; estimates have explicit context.",
+  "kindValues": {
+    "calculated": "Theoretical probability under stated assumptions",
+    "published": "Published game-operator odds",
+    "estimate": "Population-level statistical estimate"
+  },
+  "items": [
+    {
+      "id": "birthday_paradox_40",
+      "category": "birthday",
+      "de": "Unter 40 Personen teilen sich mindestens zwei den Geburtstag",
+      "en": "At least two of 40 people share a birthday",
+      "conditionDe": "Unabhängige gleichverteilte Geburtstage über 365 Tage; mindestens ein Paar.",
+      "conditionEn": "Independent uniform birthdays across 365 days; at least one matching pair.",
+      "oneIn": 1.122042536,
+      "kind": "calculated"
+    },
+    {
+      "id": "birthday_paradox_30",
+      "category": "birthday",
+      "de": "Unter 30 Personen teilen sich mindestens zwei den Geburtstag",
+      "en": "At least two of 30 people share a birthday",
+      "conditionDe": "Unabhängige gleichverteilte Geburtstage über 365 Tage; mindestens ein Paar.",
+      "conditionEn": "Independent uniform birthdays across 365 days; at least one matching pair.",
+      "oneIn": 1.415796409,
+      "kind": "calculated"
+    },
+    {
+      "id": "birthday_paradox_23",
+      "category": "birthday",
+      "de": "Unter 23 Personen teilen sich mindestens zwei den Geburtstag",
+      "en": "At least two of 23 people share a birthday",
+      "conditionDe": "Unabhängige gleichverteilte Geburtstage über 365 Tage; mindestens ein Paar.",
+      "conditionEn": "Independent uniform birthdays across 365 days; at least one matching pair.",
+      "oneIn": 1.971230932,
+      "kind": "calculated"
+    },
+    {
+      "id": "poker_high_card",
+      "category": "cards",
+      "de": "Eine Pokerhand ohne Paar ziehen",
+      "en": "Get a high-card poker hand",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 1.995301488,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "poker_one_pair",
+      "category": "cards",
+      "de": "Genau ein Paar beim Poker bekommen",
+      "en": "Get exactly one pair in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 2.366477273,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "birthday_paradox_15",
+      "category": "birthday",
+      "de": "Unter 15 Personen teilen sich mindestens zwei den Geburtstag",
+      "en": "At least two of 15 people share a birthday",
+      "conditionDe": "Unabhängige gleichverteilte Geburtstage über 365 Tage; mindestens ein Paar.",
+      "conditionEn": "Independent uniform birthdays across 365 days; at least one matching pair.",
+      "oneIn": 3.954111433,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_2_heads",
+      "category": "coins",
+      "de": "2-mal hintereinander Kopf werfen",
+      "en": "Flip heads 2 times in a row",
+      "conditionDe": "2 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "2 independent flips of a fair coin.",
+      "oneIn": 4.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_first_equals_second",
+      "category": "dice",
+      "de": "Zweimal hintereinander dieselbe Würfelzahl",
+      "en": "Roll the same number twice in a row",
+      "conditionDe": "Zwei unabhängige faire Würfe; die erste Zahl ist beliebig.",
+      "conditionEn": "Two fair independent rolls; the first result can be anything.",
+      "oneIn": 6.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_sum_7",
+      "category": "dice",
+      "de": "Mit zwei Würfeln genau sieben würfeln",
+      "en": "Roll a total of seven with two dice",
+      "conditionDe": "Zwei unabhängige faire Würfel; sechs günstige von 36 Kombinationen.",
+      "conditionEn": "Two independent fair dice; 6 of 36 outcomes work.",
+      "oneIn": 6.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_3_heads",
+      "category": "coins",
+      "de": "3-mal hintereinander Kopf werfen",
+      "en": "Flip heads 3 times in a row",
+      "conditionDe": "3 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "3 independent flips of a fair coin.",
+      "oneIn": 8.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_4_same",
+      "category": "coins",
+      "de": "Vier Münzwürfe: jedes Mal dieselbe Seite",
+      "en": "Four coin flips: the same side every time",
+      "conditionDe": "Vier faire Würfe, entweder 4× Kopf oder 4× Zahl.",
+      "conditionEn": "Four fair flips, either all heads or all tails.",
+      "oneIn": 8.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_red_3",
+      "category": "roulette",
+      "de": "3-mal hintereinander Rot beim europäischen Roulette",
+      "en": "Hit red 3 times in a row in European roulette",
+      "conditionDe": "3 unabhängige faire Drehungen; Rot 18 von 37 (inklusive Null).",
+      "conditionEn": "3 independent fair spins; red is 18 out of 37 (including zero).",
+      "oneIn": 8.685356653,
+      "kind": "calculated"
+    },
+    {
+      "id": "candies_three_red",
+      "category": "everyday",
+      "de": "Drei rote Gummibärchen nacheinander aus einer 10/10-Mischung ziehen",
+      "en": "Draw three red gummies in a row from a 10/10 mix",
+      "conditionDe": "10 rote und 10 blaue, dreimal ohne Zurücklegen.",
+      "conditionEn": "10 red and 10 blue, three draws without replacement.",
+      "oneIn": 9.5,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_ace",
+      "category": "cards",
+      "de": "Beim Ziehen ein Ass erwischen",
+      "en": "Draw an ace from a deck",
+      "conditionDe": "Eine Karte zufällig aus 52 ohne Joker.",
+      "conditionEn": "One random card from 52 without jokers.",
+      "oneIn": 13.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_4_heads",
+      "category": "coins",
+      "de": "4-mal hintereinander Kopf werfen",
+      "en": "Flip heads 4 times in a row",
+      "conditionDe": "4 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "4 independent flips of a fair coin.",
+      "oneIn": 16.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_two_hearts",
+      "category": "cards",
+      "de": "Zwei Herz-Karten hintereinander ziehen",
+      "en": "Draw two hearts in a row",
+      "conditionDe": "Zwei Karten ohne Zurücklegen aus 52.",
+      "conditionEn": "Two cards without replacement from 52.",
+      "oneIn": 17.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "socks_10_pairs",
+      "category": "everyday",
+      "de": "Aus 10 Sockenpaaren blind ein passendes Paar ziehen",
+      "en": "Blindly draw a matching pair from 10 pairs of socks",
+      "conditionDe": "10 eindeutig unterscheidbare Paare (= 20 Socken), zufällig zwei ohne Zurücklegen.",
+      "conditionEn": "10 unique pairs (= 20 socks), draw two randomly without replacement.",
+      "oneIn": 19.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "d20_nat1",
+      "category": "tabletop",
+      "de": "Einen kritischen Patzer mit einem W20 würfeln",
+      "en": "Roll a natural 1 on a d20",
+      "conditionDe": "Ein fairer W20; eine bestimmte Augenzahl.",
+      "conditionEn": "One fair d20; one particular face.",
+      "oneIn": 20.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "candies_four_same",
+      "category": "everyday",
+      "de": "Aus 5 roten und 5 blauen Bonbons vier derselben Farbe ziehen",
+      "en": "Draw four matching-color candies from 5 red and 5 blue",
+      "conditionDe": "Vier Bonbons ohne Zurücklegen aus zehn, alle Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "Four candies without replacement from ten, all sequences equally likely.",
+      "oneIn": 21.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "poker_two_pair",
+      "category": "cards",
+      "de": "Zwei Paare beim Poker bekommen",
+      "en": "Get two pair in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 21.035353535,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "gummy_spicy",
+      "category": "everyday",
+      "de": "Die einzige saure Gummibärchen-Bombe aus 24 erwischen",
+      "en": "Pick the one super-sour gummy out of 24",
+      "conditionDe": "Genau ein bestimmtes Gummibärchen unter 24, blind eine Auswahl.",
+      "conditionEn": "Exactly one designated gummy among 24, one blind pick.",
+      "oneIn": 24.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_4",
+      "category": "music",
+      "de": "4 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 4 songs into one exact preselected order",
+      "conditionDe": "4 unterschiedliche Songs, alle 4! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "4 distinct songs, all 4! orders equally likely.",
+      "oneIn": 24.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "timing_24",
+      "category": "everyday",
+      "de": "Auf Anhieb die richtige Stunde eines Tages erraten",
+      "en": "Guess the right hour of a day on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 24 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 24 possibilities.",
+      "oneIn": 24.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_red_ace",
+      "category": "cards",
+      "de": "Ein rotes Ass aus dem Deck ziehen",
+      "en": "Draw a red ace from a deck",
+      "conditionDe": "Eine Karte zufällig aus 52 ohne Joker.",
+      "conditionEn": "One random card from 52 without jokers.",
+      "oneIn": 26.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "rps_3_wins",
+      "category": "games",
+      "de": "3-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 3 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 27.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "timing_30",
+      "category": "everyday",
+      "de": "Auf Anhieb die richtige Minute einer halben Stunde erraten",
+      "en": "Guess the right minute of half an hour on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 30 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 30 possibilities.",
+      "oneIn": 30.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_5_heads",
+      "category": "coins",
+      "de": "5-mal hintereinander Kopf werfen",
+      "en": "Flip heads 5 times in a row",
+      "conditionDe": "5 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "5 independent flips of a fair coin.",
+      "oneIn": 32.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_2_sixes",
+      "category": "dice",
+      "de": "2-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 2 times in a row",
+      "conditionDe": "2 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "2 independent rolls of a fair six-sided die.",
+      "oneIn": 36.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_3_same",
+      "category": "dice",
+      "de": "3 Würfel zeigen alle dieselbe Zahl",
+      "en": "3 dice all show the same face",
+      "conditionDe": "3 unabhängige faire Würfel, beliebige gemeinsame Augenzahl.",
+      "conditionEn": "3 independent fair dice; any common face counts.",
+      "oneIn": 36.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_snake_eyes",
+      "category": "dice",
+      "de": "Mit zwei Würfeln eine Doppel-Eins würfeln",
+      "en": "Roll snake eyes with two dice",
+      "conditionDe": "Zwei faire Würfel, beide zeigen 1.",
+      "conditionEn": "Two fair dice, both showing 1.",
+      "oneIn": 36.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_sum_12",
+      "category": "dice",
+      "de": "Mit zwei Würfeln genau zwölf würfeln",
+      "en": "Roll a total of twelve with two dice",
+      "conditionDe": "Zwei faire Würfel; nur 6+6.",
+      "conditionEn": "Two fair dice; only 6+6.",
+      "oneIn": 36.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_red_5",
+      "category": "roulette",
+      "de": "5-mal hintereinander Rot beim europäischen Roulette",
+      "en": "Hit red 5 times in a row in European roulette",
+      "conditionDe": "5 unabhängige faire Drehungen; Rot 18 von 37 (inklusive Null).",
+      "conditionEn": "5 independent fair spins; red is 18 out of 37 (including zero).",
+      "oneIn": 36.698312524,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_1_exact",
+      "category": "roulette",
+      "de": "Beim europäischen Roulette 1-mal hintereinander genau die 17 treffen",
+      "en": "Hit exactly 17 in European roulette 1 times in a row",
+      "conditionDe": "1 unabhängige faire Drehungen, europäischer Kessel mit 37 Zahlen (0–36).",
+      "conditionEn": "1 independent fair spins on European roulette (37 outcomes, 0–36).",
+      "oneIn": 37.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "powerball_4",
+      "category": "lottery",
+      "de": "Bei Powerball einen 4-Dollar-Preis gewinnen (5x Power Play ausgenommen)",
+      "en": "Win a $4 Powerball prize (without Power Play)",
+      "conditionDe": "Eine der 4-Dollar-Gewinnklassen, vier Dollar für 0+1 (ohne Power Play); gerundete Betreiberquote.",
+      "conditionEn": "One $4 tier: 0+1 matches (without Power Play); rounded operator odds.",
+      "oneIn": 38.32,
+      "kind": "published",
+      "sourceUrl": "https://www.powerball.com/powerball-prize-chart?hl=en-US"
+    },
+    {
+      "id": "socks_20_pairs",
+      "category": "everyday",
+      "de": "Aus 20 Sockenpaaren blind ein passendes Paar ziehen",
+      "en": "Blindly draw a matching pair from 20 pairs of socks",
+      "conditionDe": "20 eindeutig unterscheidbare Paare (= 40 Socken), zufällig zwei ohne Zurücklegen.",
+      "conditionEn": "20 unique pairs (= 40 socks), draw two randomly without replacement.",
+      "oneIn": 39.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_all_red_5",
+      "category": "cards",
+      "de": "Fünf rote Spielkarten hintereinander ziehen",
+      "en": "Draw five red playing cards in a row",
+      "conditionDe": "52 Karten, davon 26 rot, fünf ohne Zurücklegen.",
+      "conditionEn": "52 cards, of which 26 are red, five drawn without replacement.",
+      "oneIn": 39.509881423,
+      "kind": "calculated"
+    },
+    {
+      "id": "poker_three",
+      "category": "cards",
+      "de": "Einen Drilling beim Poker bekommen",
+      "en": "Get three of a kind in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 47.329545455,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "eurojackpot_2plus1",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 2+1 treffen",
+      "en": "Hit exactly 2+1 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 49.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "cards_ace_spades",
+      "category": "cards",
+      "de": "Auf Anhieb das Pik-Ass ziehen",
+      "en": "Draw the ace of spades first try",
+      "conditionDe": "Eine Karte zufällig aus 52 ohne Joker.",
+      "conditionEn": "One random card from 52 without jokers.",
+      "oneIn": 52.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "timing_60",
+      "category": "everyday",
+      "de": "Auf Anhieb die richtige Minute einer Stunde erraten",
+      "en": "Guess the right minute of an hour on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 60 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 60 possibilities.",
+      "oneIn": 60.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_6_heads",
+      "category": "coins",
+      "de": "6-mal hintereinander Kopf werfen",
+      "en": "Flip heads 6 times in a row",
+      "conditionDe": "6 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "6 independent flips of a fair coin.",
+      "oneIn": 64.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_three_hearts",
+      "category": "cards",
+      "de": "Drei Herz-Karten hintereinander ziehen",
+      "en": "Draw three hearts in a row",
+      "conditionDe": "Drei Karten ohne Zurücklegen aus 52.",
+      "conditionEn": "Three cards without replacement from 52.",
+      "oneIn": 77.272727273,
+      "kind": "calculated"
+    },
+    {
+      "id": "rps_4_wins",
+      "category": "games",
+      "de": "4-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 4 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 81.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "socks_50_pairs",
+      "category": "everyday",
+      "de": "Aus 50 Sockenpaaren blind ein passendes Paar ziehen",
+      "en": "Blindly draw a matching pair from 50 pairs of socks",
+      "conditionDe": "50 eindeutig unterscheidbare Paare (= 100 Socken), zufällig zwei ohne Zurücklegen.",
+      "conditionEn": "50 unique pairs (= 100 socks), draw two randomly without replacement.",
+      "oneIn": 99.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "timing_100",
+      "category": "everyday",
+      "de": "Auf Anhieb die richtige Nummer aus 100 Losen erraten",
+      "en": "Guess the right ticket out of 100 on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 100 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 100 possibilities.",
+      "oneIn": 100.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_5",
+      "category": "music",
+      "de": "5 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 5 songs into one exact preselected order",
+      "conditionDe": "5 unterschiedliche Songs, alle 5! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "5 distinct songs, all 5! orders equally likely.",
+      "oneIn": 120.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_7_heads",
+      "category": "coins",
+      "de": "7-mal hintereinander Kopf werfen",
+      "en": "Flip heads 7 times in a row",
+      "conditionDe": "7 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "7 independent flips of a fair coin.",
+      "oneIn": 128.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_8_same",
+      "category": "coins",
+      "de": "Acht Münzwürfe: jedes Mal dieselbe Seite",
+      "en": "Eight coin flips: the same side every time",
+      "conditionDe": "Acht faire Würfe, entweder 8× Kopf oder 8× Zahl.",
+      "conditionEn": "Eight fair flips, either all heads or all tails.",
+      "oneIn": 128.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_1plus2",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 1+2 treffen",
+      "en": "Hit exactly 1+2 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 188.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "socks_100_pairs",
+      "category": "everyday",
+      "de": "Aus 100 Sockenpaaren blind ein passendes Paar ziehen",
+      "en": "Blindly draw a matching pair from 100 pairs of socks",
+      "conditionDe": "100 eindeutig unterscheidbare Paare (= 200 Socken), zufällig zwei ohne Zurücklegen.",
+      "conditionEn": "100 unique pairs (= 200 socks), draw two randomly without replacement.",
+      "oneIn": 199.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_3_sixes",
+      "category": "dice",
+      "de": "3-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 3 times in a row",
+      "conditionDe": "3 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "3 independent rolls of a fair six-sided die.",
+      "oneIn": 216.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_4_same",
+      "category": "dice",
+      "de": "4 Würfel zeigen alle dieselbe Zahl",
+      "en": "4 dice all show the same face",
+      "conditionDe": "4 unabhängige faire Würfel, beliebige gemeinsame Augenzahl.",
+      "conditionEn": "4 independent fair dice; any common face counts.",
+      "oneIn": 216.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cookies_three",
+      "category": "everyday",
+      "de": "Blind drei Schokokekse erwischen, wenn nur drei drin sind",
+      "en": "Blindly pick all three chocolate cookies",
+      "conditionDe": "Dose mit 3 Schoko- und 9 Vanillekeksen; drei zufällige ohne Zurücklegen.",
+      "conditionEn": "Jar with 3 chocolate and 9 vanilla cookies; three draws without replacement.",
+      "oneIn": 220.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_two_aces",
+      "category": "cards",
+      "de": "Direkt zwei Asse hintereinander ziehen",
+      "en": "Draw two aces in a row",
+      "conditionDe": "Zwei Karten ohne Zurücklegen aus 52.",
+      "conditionEn": "Two cards without replacement from 52.",
+      "oneIn": 221.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "rps_5_wins",
+      "category": "games",
+      "de": "5-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 5 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 243.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "poker_straight",
+      "category": "cards",
+      "de": "Eine Straße beim Poker bekommen",
+      "en": "Get a straight in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 254.8,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "coin_8_heads",
+      "category": "coins",
+      "de": "8-mal hintereinander Kopf werfen",
+      "en": "Flip heads 8 times in a row",
+      "conditionDe": "8 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "8 independent flips of a fair coin.",
+      "oneIn": 256.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_3plus0",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 3+0 treffen",
+      "en": "Hit exactly 3+0 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 314.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "birthday_match",
+      "category": "birthday",
+      "de": "Den Geburtstag einer zufällig gewählten Person erraten",
+      "en": "Guess a random person’s birthday",
+      "conditionDe": "Vereinfachtes Modell: 365 Geburtstage gleich wahrscheinlich; kein 29. Februar.",
+      "conditionEn": "Simplified model: 365 dates equally likely; exclude Feb 29.",
+      "oneIn": 365.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "timing_365",
+      "category": "everyday",
+      "de": "Auf Anhieb das richtige Datum eines 365-Tage-Jahres erraten",
+      "en": "Guess the right date in a 365-day year on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 365 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 365 possibilities.",
+      "oneIn": 365.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "leap_day",
+      "category": "birthday",
+      "de": "Zufällig den 29. Februar in einem Schaltjahr erwischen",
+      "en": "Randomly pick February 29 in a leap year",
+      "conditionDe": "Zufälliger Tag aus einem Schaltjahr mit 366 Tagen, keine Geburtenstatistik.",
+      "conditionEn": "Uniform random date from a 366-day leap year, not a birth statistic.",
+      "oneIn": 366.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_four_hearts",
+      "category": "cards",
+      "de": "Vier Herz-Karten hintereinander ziehen",
+      "en": "Draw four hearts in a row",
+      "conditionDe": "Vier Karten ohne Zurücklegen aus 52.",
+      "conditionEn": "Four cards without replacement from 52.",
+      "oneIn": 378.636363636,
+      "kind": "calculated"
+    },
+    {
+      "id": "d20_nat20_2",
+      "category": "tabletop",
+      "de": "2 natürliche 20er hintereinander bei D&D",
+      "en": "Roll 2 natural 20s in a row in D&D",
+      "conditionDe": "2 unabhängige Würfe mit einem fairen W20.",
+      "conditionEn": "2 independent rolls of a fair d20.",
+      "oneIn": 400.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "poker_flush",
+      "category": "cards",
+      "de": "Einen Flush beim Poker bekommen",
+      "en": "Get a flush in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 508.801879405,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "coin_9_heads",
+      "category": "coins",
+      "de": "9-mal hintereinander Kopf werfen",
+      "en": "Flip heads 9 times in a row",
+      "conditionDe": "9 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "9 independent flips of a fair coin.",
+      "oneIn": 512.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "poker_full_house",
+      "category": "cards",
+      "de": "Ein Full House beim Poker bekommen",
+      "en": "Get a full house in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 694.166666667,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "eurojackpot_3plus1",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 3+1 treffen",
+      "en": "Hit exactly 3+1 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 706.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "playlist_6",
+      "category": "music",
+      "de": "6 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 6 songs into one exact preselected order",
+      "conditionDe": "6 unterschiedliche Songs, alle 6! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "6 distinct songs, all 6! orders equally likely.",
+      "oneIn": 720.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "rps_6_wins",
+      "category": "games",
+      "de": "6-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 6 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 729.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_2plus2",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 2+2 treffen",
+      "en": "Hit exactly 2+2 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 985.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "pin_3_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 3-stelligen PIN sofort erraten",
+      "en": "Guess a random 3-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 3 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 3-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 1000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_10_alternate",
+      "category": "coins",
+      "de": "Zehnmal exakt Kopf–Zahl im Wechsel werfen",
+      "en": "Flip exactly heads–tails alternating, 10 times",
+      "conditionDe": "Eine vorher festgelegte Reihenfolge von 10 fairen Münzwürfen.",
+      "conditionEn": "One preselected sequence of 10 fair coin flips.",
+      "oneIn": 1024.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_10_heads",
+      "category": "coins",
+      "de": "10-mal hintereinander Kopf werfen",
+      "en": "Flip heads 10 times in a row",
+      "conditionDe": "10 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "10 independent flips of a fair coin.",
+      "oneIn": 1024.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_4_sixes",
+      "category": "dice",
+      "de": "4-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 4 times in a row",
+      "conditionDe": "4 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "4 independent rolls of a fair six-sided die.",
+      "oneIn": 1296.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_5_same",
+      "category": "dice",
+      "de": "5 Würfel zeigen alle dieselbe Zahl",
+      "en": "5 dice all show the same face",
+      "conditionDe": "5 unabhängige faire Würfel, beliebige gemeinsame Augenzahl.",
+      "conditionEn": "5 independent fair dice; any common face counts.",
+      "oneIn": 1296.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_red_10",
+      "category": "roulette",
+      "de": "10-mal hintereinander Rot beim europäischen Roulette",
+      "en": "Hit red 10 times in a row in European roulette",
+      "conditionDe": "10 unabhängige faire Drehungen; Rot 18 von 37 (inklusive Null).",
+      "conditionEn": "10 independent fair spins; red is 18 out of 37 (including zero).",
+      "oneIn": 1346.766142134,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_2_exact",
+      "category": "roulette",
+      "de": "Beim europäischen Roulette 2-mal hintereinander genau die 17 treffen",
+      "en": "Hit exactly 17 in European roulette 2 times in a row",
+      "conditionDe": "2 unabhängige faire Drehungen, europäischer Kessel mit 37 Zahlen (0–36).",
+      "conditionEn": "2 independent fair spins on European roulette (37 outcomes, 0–36).",
+      "oneIn": 1369.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "timing_1440",
+      "category": "everyday",
+      "de": "Auf Anhieb die richtige Minute eines Tages erraten",
+      "en": "Guess the right minute of a day on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 1,440 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 1,440 possibilities.",
+      "oneIn": 1440.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "rps_7_wins",
+      "category": "games",
+      "de": "7-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 7 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 2187.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_exact_first_2",
+      "category": "cards",
+      "de": "Zwei vorher bestimmte Karten in exakter Reihenfolge ziehen",
+      "en": "Draw two preselected cards in exact order",
+      "conditionDe": "Zwei verschiedene Karten; ohne Zurücklegen, Reihenfolge vorab festgelegt.",
+      "conditionEn": "Two distinct cards; without replacement, order preselected.",
+      "oneIn": 2652.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_12_heads",
+      "category": "coins",
+      "de": "12-mal hintereinander Kopf werfen",
+      "en": "Flip heads 12 times in a row",
+      "conditionDe": "12 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "12 independent flips of a fair coin.",
+      "oneIn": 4096.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "pokemon_shiny_modern",
+      "category": "games",
+      "de": "Ein Shiny-Pokémon bei einer normalen Begegnung finden (ab Gen VI)",
+      "en": "Encounter a Shiny Pokémon at base odds (Gen VI onward)",
+      "conditionDe": "Normale Begegnung in Spielen mit 1:4096-Grundrate, ohne Shiny Charm oder andere Boni. Nicht für alle Pokémon-Spiele gültig.",
+      "conditionEn": "Normal encounter in games with 1:4096 base odds, without Shiny Charm or boosts. Does not apply to every Pokémon game.",
+      "oneIn": 4096.0,
+      "kind": "published",
+      "sourceUrl": "https://www.pokemon.com/us/strategy/special-pokemon-answer-the-call-for-help-in-sos-battles/"
+    },
+    {
+      "id": "poker_four",
+      "category": "cards",
+      "de": "Vierling beim Poker bekommen",
+      "en": "Get four of a kind in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 4165.0,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "playlist_7",
+      "category": "music",
+      "de": "7 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 7 songs into one exact preselected order",
+      "conditionDe": "7 unterschiedliche Songs, alle 7! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "7 distinct songs, all 7! orders equally likely.",
+      "oneIn": 5040.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_three_aces",
+      "category": "cards",
+      "de": "Direkt drei Asse hintereinander ziehen",
+      "en": "Draw three aces in a row",
+      "conditionDe": "Drei Karten ohne Zurücklegen aus 52.",
+      "conditionEn": "Three cards without replacement from 52.",
+      "oneIn": 5525.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "rps_8_wins",
+      "category": "games",
+      "de": "8-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 8 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 6561.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_5_sixes",
+      "category": "dice",
+      "de": "5-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 5 times in a row",
+      "conditionDe": "5 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "5 independent rolls of a fair six-sided die.",
+      "oneIn": 7776.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_6_same",
+      "category": "dice",
+      "de": "6 Würfel zeigen alle dieselbe Zahl",
+      "en": "6 dice all show the same face",
+      "conditionDe": "6 unabhängige faire Würfel, beliebige gemeinsame Augenzahl.",
+      "conditionEn": "6 independent fair dice; any common face counts.",
+      "oneIn": 7776.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "d20_nat20_3",
+      "category": "tabletop",
+      "de": "3 natürliche 20er hintereinander bei D&D",
+      "en": "Roll 3 natural 20s in a row in D&D",
+      "conditionDe": "3 unabhängige Würfe mit einem fairen W20.",
+      "conditionEn": "3 independent rolls of a fair d20.",
+      "oneIn": 8000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "pokemon_shiny_older",
+      "category": "games",
+      "de": "Ein Shiny-Pokémon bei einer normalen Begegnung finden (Gen II–V)",
+      "en": "Encounter a Shiny Pokémon at base odds (Gen II–V)",
+      "conditionDe": "Normale Begegnung in Pokémon-Generationen II–V, ohne Methoden für erhöhte Shiny-Rate.",
+      "conditionEn": "Normal encounter in Pokémon Generations II–V, with no Shiny-rate boosting methods.",
+      "oneIn": 8192.0,
+      "kind": "calculated",
+      "sourceUrl": "https://bulbapedia.bulbagarden.net/wiki/Shiny_Pokemon"
+    },
+    {
+      "id": "four_leaf_clover",
+      "category": "real_world",
+      "de": "Ein vierblättriges Kleeblatt unter gewöhnlichem Klee finden",
+      "en": "Find a four-leaf clover among ordinary clovers",
+      "conditionDe": "Grobe Schätzung für ein zufällig ausgewähltes Kleeblatt; Standort und genetische Häufungen beeinflussen die Häufigkeit.",
+      "conditionEn": "Rough estimate per randomly chosen clover; location and clustered genetics affect frequency.",
+      "oneIn": 10000.0,
+      "kind": "estimate",
+      "sourceUrl": "https://www.smithsonianmag.com/smart-news/how-find-four-leaf-clover-180950114/"
+    },
+    {
+      "id": "pin_4_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 4-stelligen PIN sofort erraten",
+      "en": "Guess a random 4-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 4 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 4-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 10000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_4plus0",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 4+0 treffen",
+      "en": "Hit exactly 4+0 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 13811.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "eurojackpot_3plus2",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 3+2 treffen",
+      "en": "Hit exactly 3+2 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 14125.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "password_3_letters",
+      "category": "technology",
+      "de": "Ein zufälliges 3-Buchstaben-Passwort direkt erraten",
+      "en": "Guess a random 3-letter password instantly",
+      "conditionDe": "3 unabhängige gleichverteilte Kleinbuchstaben a–z; nicht echte menschliche Passwörter.",
+      "conditionEn": "3 independent uniform lowercase letters a–z; not real human-chosen passwords.",
+      "oneIn": 17576.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "lightning_lifetime_us",
+      "category": "real_world",
+      "de": "Im Laufe des Lebens vom Blitz getroffen werden (USA)",
+      "en": "Get struck by lightning over a lifetime (U.S.)",
+      "conditionDe": "US-Durchschnitt für angenommene 80 Lebensjahre, NOAA-Schätzung 2013–2022.",
+      "conditionEn": "U.S. average over an assumed 80-year lifetime, NOAA estimate 2013–2022.",
+      "oneIn": 18864.0,
+      "kind": "estimate",
+      "sourceUrl": "https://www.noaa.gov/jetstream/lightning/frequently-asked-questions"
+    },
+    {
+      "id": "rps_9_wins",
+      "category": "games",
+      "de": "9-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 9 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 19683.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_4plus1",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 4+1 treffen",
+      "en": "Hit exactly 4+1 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 31075.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "coin_15_heads",
+      "category": "coins",
+      "de": "15-mal hintereinander Kopf werfen",
+      "en": "Flip heads 15 times in a row",
+      "conditionDe": "15 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "15 independent flips of a fair coin.",
+      "oneIn": 32768.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_8",
+      "category": "music",
+      "de": "8 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 8 songs into one exact preselected order",
+      "conditionDe": "8 unterschiedliche Songs, alle 8! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "8 distinct songs, all 8! orders equally likely.",
+      "oneIn": 40320.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_6_sixes",
+      "category": "dice",
+      "de": "6-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 6 times in a row",
+      "conditionDe": "6 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "6 independent rolls of a fair six-sided die.",
+      "oneIn": 46656.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_7_same",
+      "category": "dice",
+      "de": "7 Würfel zeigen alle dieselbe Zahl",
+      "en": "7 dice all show the same face",
+      "conditionDe": "7 unabhängige faire Würfel, beliebige gemeinsame Augenzahl.",
+      "conditionEn": "7 independent fair dice; any common face counts.",
+      "oneIn": 46656.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_3_exact",
+      "category": "roulette",
+      "de": "Beim europäischen Roulette 3-mal hintereinander genau die 17 treffen",
+      "en": "Hit exactly 17 in European roulette 3 times in a row",
+      "conditionDe": "3 unabhängige faire Drehungen, europäischer Kessel mit 37 Zahlen (0–36).",
+      "conditionEn": "3 independent fair spins on European roulette (37 outcomes, 0–36).",
+      "oneIn": 50653.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "rps_10_wins",
+      "category": "games",
+      "de": "10-mal Stein–Schere–Papier hintereinander gewinnen",
+      "en": "Win rock–paper–scissors 10 times in a row",
+      "conditionDe": "Beide wählen pro Runde zufällig und gleichverteilt; Unentschieden unterbricht die Serie.",
+      "conditionEn": "Both players choose uniformly at random each round; a draw breaks the streak.",
+      "oneIn": 59049.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "poker_straight_flush",
+      "category": "cards",
+      "de": "Einen Straight Flush (ohne Royal Flush) bekommen",
+      "en": "Get a straight flush (not royal) in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 72193.333333333,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "timing_86400",
+      "category": "everyday",
+      "de": "Auf Anhieb die richtige Sekunde eines Tages erraten",
+      "en": "Guess the right second of a day on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 86,400 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 86,400 possibilities.",
+      "oneIn": 86400.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "pin_5_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 5-stelligen PIN sofort erraten",
+      "en": "Guess a random 5-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 5 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 5-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 100000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "birthday_three",
+      "category": "birthday",
+      "de": "Drei zufällige Personen haben denselben Geburtstag",
+      "en": "Three random people share the same birthday",
+      "conditionDe": "Unabhängige, gleichverteilte Geburtstage an 365 Tagen; erster Geburtstag beliebig.",
+      "conditionEn": "Independent, uniform birthdays across 365 days; first birthday may be any day.",
+      "oneIn": 133225.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "d20_nat20_4",
+      "category": "tabletop",
+      "de": "4 natürliche 20er hintereinander bei D&D",
+      "en": "Roll 4 natural 20s in a row in D&D",
+      "conditionDe": "4 unabhängige Würfe mit einem fairen W20.",
+      "conditionEn": "4 independent rolls of a fair d20.",
+      "oneIn": 160000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "cards_four_aces",
+      "category": "cards",
+      "de": "Direkt alle vier Asse hintereinander ziehen",
+      "en": "Draw all four aces in a row",
+      "conditionDe": "Vier Karten ohne Zurücklegen aus 52.",
+      "conditionEn": "Four cards without replacement from 52.",
+      "oneIn": 270725.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_7_sixes",
+      "category": "dice",
+      "de": "7-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 7 times in a row",
+      "conditionDe": "7 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "7 independent rolls of a fair six-sided die.",
+      "oneIn": 279936.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_8_same",
+      "category": "dice",
+      "de": "8 Würfel zeigen alle dieselbe Zahl",
+      "en": "8 dice all show the same face",
+      "conditionDe": "8 unabhängige faire Würfel, beliebige gemeinsame Augenzahl.",
+      "conditionEn": "8 independent fair dice; any common face counts.",
+      "oneIn": 279936.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_9",
+      "category": "music",
+      "de": "9 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 9 songs into one exact preselected order",
+      "conditionDe": "9 unterschiedliche Songs, alle 9! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "9 distinct songs, all 9! orders equally likely.",
+      "oneIn": 362880.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "password_4_letters",
+      "category": "technology",
+      "de": "Ein zufälliges 4-Buchstaben-Passwort direkt erraten",
+      "en": "Guess a random 4-letter password instantly",
+      "conditionDe": "4 unabhängige gleichverteilte Kleinbuchstaben a–z; nicht echte menschliche Passwörter.",
+      "conditionEn": "4 independent uniform lowercase letters a–z; not real human-chosen passwords.",
+      "oneIn": 456976.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_4plus2",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 4+2 treffen",
+      "en": "Hit exactly 4+2 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 621503.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "poker_royal_flush",
+      "category": "cards",
+      "de": "Einen Royal Flush beim Poker bekommen",
+      "en": "Get a royal flush in poker",
+      "conditionDe": "Zufällige 5-Karten-Hand aus einem normalen 52-Karten-Deck; Kategorien schließen sich aus.",
+      "conditionEn": "Random 5-card hand from a standard 52-card deck; categories are mutually exclusive.",
+      "oneIn": 649740.0,
+      "kind": "calculated",
+      "sourceUrl": "https://www.pokerology.com/poker/math/probability/"
+    },
+    {
+      "id": "pin_6_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 6-stelligen PIN sofort erraten",
+      "en": "Guess a random 6-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 6 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 6-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 1000000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_20_heads",
+      "category": "coins",
+      "de": "20-mal hintereinander Kopf werfen",
+      "en": "Flip heads 20 times in a row",
+      "conditionDe": "20 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "20 independent flips of a fair coin.",
+      "oneIn": 1048576.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "lightning_year_us",
+      "category": "real_world",
+      "de": "In einem Jahr vom Blitz getroffen werden (USA)",
+      "en": "Get struck by lightning in one year (U.S.)",
+      "conditionDe": "US-Bevölkerungsdurchschnitt; NOAA-Schätzung aus 2013–2022, kein individuelles Risiko.",
+      "conditionEn": "U.S. population average; NOAA estimate based on 2013–2022, not an individual risk.",
+      "oneIn": 1509000.0,
+      "kind": "estimate",
+      "sourceUrl": "https://www.noaa.gov/jetstream/lightning/frequently-asked-questions"
+    },
+    {
+      "id": "dice_8_sixes",
+      "category": "dice",
+      "de": "8-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 8 times in a row",
+      "conditionDe": "8 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "8 independent rolls of a fair six-sided die.",
+      "oneIn": 1679616.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_4_exact",
+      "category": "roulette",
+      "de": "Beim europäischen Roulette 4-mal hintereinander genau die 17 treffen",
+      "en": "Hit exactly 17 in European roulette 4 times in a row",
+      "conditionDe": "4 unabhängige faire Drehungen, europäischer Kessel mit 37 Zahlen (0–36).",
+      "conditionEn": "4 independent fair spins on European roulette (37 outcomes, 0–36).",
+      "oneIn": 1874161.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_5plus0",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 5+0 treffen",
+      "en": "Hit exactly 5+0 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 3107515.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "d20_nat20_5",
+      "category": "tabletop",
+      "de": "5 natürliche 20er hintereinander bei D&D",
+      "en": "Roll 5 natural 20s in a row in D&D",
+      "conditionDe": "5 unabhängige Würfe mit einem fairen W20.",
+      "conditionEn": "5 independent rolls of a fair d20.",
+      "oneIn": 3200000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_10",
+      "category": "music",
+      "de": "10 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 10 songs into one exact preselected order",
+      "conditionDe": "10 unterschiedliche Songs, alle 10! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "10 distinct songs, all 10! orders equally likely.",
+      "oneIn": 3628800.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_5plus1",
+      "category": "lottery",
+      "de": "Beim Eurojackpot genau 5+1 treffen",
+      "en": "Hit exactly 5+1 in Eurojackpot",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 6991908.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "pin_7_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 7-stelligen PIN sofort erraten",
+      "en": "Guess a random 7-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 7 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 7-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 10000000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_9_sixes",
+      "category": "dice",
+      "de": "9-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 9 times in a row",
+      "conditionDe": "9 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "9 independent rolls of a fair six-sided die.",
+      "oneIn": 10077696.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "password_5_letters",
+      "category": "technology",
+      "de": "Ein zufälliges 5-Buchstaben-Passwort direkt erraten",
+      "en": "Guess a random 5-letter password instantly",
+      "conditionDe": "5 unabhängige gleichverteilte Kleinbuchstaben a–z; nicht echte menschliche Passwörter.",
+      "conditionEn": "5 independent uniform lowercase letters a–z; not real human-chosen passwords.",
+      "oneIn": 11881376.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_24_heads",
+      "category": "coins",
+      "de": "24-mal hintereinander Kopf werfen",
+      "en": "Flip heads 24 times in a row",
+      "conditionDe": "24 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "24 independent flips of a fair coin.",
+      "oneIn": 16777216.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "timing_31536000",
+      "category": "everyday",
+      "de": "Auf Anhieb die richtige Sekunde eines 365-Tage-Jahres erraten",
+      "en": "Guess the right second of a 365-day year on the first try",
+      "conditionDe": "Gleichverteilte Zufallsauswahl aus 31,536,000 Möglichkeiten.",
+      "conditionEn": "Uniform random selection among 31,536,000 possibilities.",
+      "oneIn": 31536000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "birthday_four",
+      "category": "birthday",
+      "de": "Vier zufällige Personen haben denselben Geburtstag",
+      "en": "Four random people share the same birthday",
+      "conditionDe": "Unabhängige, gleichverteilte Geburtstage an 365 Tagen; erster Geburtstag beliebig.",
+      "conditionEn": "Independent, uniform birthdays across 365 days; first birthday may be any day.",
+      "oneIn": 48627125.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "dice_10_sixes",
+      "category": "dice",
+      "de": "10-mal hintereinander eine Sechs würfeln",
+      "en": "Roll a six 10 times in a row",
+      "conditionDe": "10 unabhängige Würfe eines fairen sechsseitigen Würfels.",
+      "conditionEn": "10 independent rolls of a fair six-sided die.",
+      "oneIn": 60466176.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "d20_nat20_6",
+      "category": "tabletop",
+      "de": "6 natürliche 20er hintereinander bei D&D",
+      "en": "Roll 6 natural 20s in a row in D&D",
+      "conditionDe": "6 unabhängige Würfe mit einem fairen W20.",
+      "conditionEn": "6 independent rolls of a fair d20.",
+      "oneIn": 64000000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_5_exact",
+      "category": "roulette",
+      "de": "Beim europäischen Roulette 5-mal hintereinander genau die 17 treffen",
+      "en": "Hit exactly 17 in European roulette 5 times in a row",
+      "conditionDe": "5 unabhängige faire Drehungen, europäischer Kessel mit 37 Zahlen (0–36).",
+      "conditionEn": "5 independent fair spins on European roulette (37 outcomes, 0–36).",
+      "oneIn": 69343957.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "pin_8_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 8-stelligen PIN sofort erraten",
+      "en": "Guess a random 8-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 8 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 8-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 100000000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "eurojackpot_jackpot",
+      "category": "lottery",
+      "de": "Den Eurojackpot knacken (5+2)",
+      "en": "Win the Eurojackpot (5+2)",
+      "conditionDe": "Ein einzelner Eurojackpot-Tipp, genau diese Gewinnklasse.",
+      "conditionEn": "One Eurojackpot ticket, exactly this prize tier.",
+      "oneIn": 139838160.0,
+      "kind": "published",
+      "sourceUrl": "https://www.lotto.de/eurojackpot/gewinnwahrscheinlichkeit"
+    },
+    {
+      "id": "powerball_jackpot",
+      "category": "lottery",
+      "de": "Den Powerball-Jackpot knacken",
+      "en": "Win the Powerball jackpot",
+      "conditionDe": "Ein Powerball-Tipp, Jackpot gemäß offiziellen Spielregeln.",
+      "conditionEn": "One Powerball ticket, jackpot under official game rules.",
+      "oneIn": 292201338.0,
+      "kind": "published",
+      "sourceUrl": "https://www.powerball.com/powerball-prize-chart?hl=en-US"
+    },
+    {
+      "id": "password_6_letters",
+      "category": "technology",
+      "de": "Ein zufälliges 6-Buchstaben-Passwort direkt erraten",
+      "en": "Guess a random 6-letter password instantly",
+      "conditionDe": "6 unabhängige gleichverteilte Kleinbuchstaben a–z; nicht echte menschliche Passwörter.",
+      "conditionEn": "6 independent uniform lowercase letters a–z; not real human-chosen passwords.",
+      "oneIn": 308915776.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_12",
+      "category": "music",
+      "de": "12 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 12 songs into one exact preselected order",
+      "conditionDe": "12 unterschiedliche Songs, alle 12! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "12 distinct songs, all 12! orders equally likely.",
+      "oneIn": 479001600.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "pin_9_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 9-stelligen PIN sofort erraten",
+      "en": "Guess a random 9-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 9 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 9-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 1000000000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_30_heads",
+      "category": "coins",
+      "de": "30-mal hintereinander Kopf werfen",
+      "en": "Flip heads 30 times in a row",
+      "conditionDe": "30 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "30 independent flips of a fair coin.",
+      "oneIn": 1073741824.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "roulette_6_exact",
+      "category": "roulette",
+      "de": "Beim europäischen Roulette 6-mal hintereinander genau die 17 treffen",
+      "en": "Hit exactly 17 in European roulette 6 times in a row",
+      "conditionDe": "6 unabhängige faire Drehungen, europäischer Kessel mit 37 Zahlen (0–36).",
+      "conditionEn": "6 independent fair spins on European roulette (37 outcomes, 0–36).",
+      "oneIn": 2565726409.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "pin_10_digits",
+      "category": "technology",
+      "de": "Einen zufälligen 10-stelligen PIN sofort erraten",
+      "en": "Guess a random 10-digit PIN on the first try",
+      "conditionDe": "Alle Zeichenfolgen von 10 Dezimalziffern einschließlich führender Nullen gleich wahrscheinlich.",
+      "conditionEn": "All 10-digit decimal strings, including leading zeroes, equally likely.",
+      "oneIn": 10000000000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "password_8_letters",
+      "category": "technology",
+      "de": "Ein zufälliges 8-Buchstaben-Passwort direkt erraten",
+      "en": "Guess a random 8-letter password instantly",
+      "conditionDe": "8 unabhängige gleichverteilte Kleinbuchstaben a–z; nicht echte menschliche Passwörter.",
+      "conditionEn": "8 independent uniform lowercase letters a–z; not real human-chosen passwords.",
+      "oneIn": 208827064576.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "coin_40_heads",
+      "category": "coins",
+      "de": "40-mal hintereinander Kopf werfen",
+      "en": "Flip heads 40 times in a row",
+      "conditionDe": "40 unabhängige Würfe einer fairen Münze.",
+      "conditionEn": "40 independent flips of a fair coin.",
+      "oneIn": 1099511627776.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_15",
+      "category": "music",
+      "de": "15 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 15 songs into one exact preselected order",
+      "conditionDe": "15 unterschiedliche Songs, alle 15! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "15 distinct songs, all 15! orders equally likely.",
+      "oneIn": 1307674368000.0,
+      "kind": "calculated"
+    },
+    {
+      "id": "playlist_20",
+      "category": "music",
+      "de": "20 Songs exakt in der vorher festgelegten Reihenfolge shuffeln",
+      "en": "Shuffle 20 songs into one exact preselected order",
+      "conditionDe": "20 unterschiedliche Songs, alle 20! Reihenfolgen gleich wahrscheinlich.",
+      "conditionEn": "20 distinct songs, all 20! orders equally likely.",
+      "oneIn": 2.43290200817664e+18,
+      "kind": "calculated"
+    }
+  ]
+}

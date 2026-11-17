@@ -133,8 +133,10 @@ public partial class MainWindow
         var tooManyTogether = allEntries.GroupBy(entry => entry.Odds.Kind).Any(group =>
             group.Aggregate((Int128)0, (sum, entry) => sum + entry.FindCount) > _luckChests);
         var included = allEntries.Where(entry => entry.LogDenominator.HasValue).ToArray();
-        LuckSummaryValue.Text = invalid || tooManyTogether || included.Length == 0 ? "—"
-            : FormatOdds(included.Sum(entry => entry.LogDenominator!.Value), _culture);
+        var combined = invalid || tooManyTogether || included.Length == 0
+            ? (double?)null : included.Sum(entry => entry.LogDenominator!.Value);
+        LuckSummaryValue.Text = combined is { } log ? FormatOdds(log, _culture) : "—";
+        ShowLuckComparison(combined);
         LuckSummaryHint.Text = invalid ? Text("InvalidCombinedFinds")
             : tooManyTogether ? Text("TooManyCombinedFinds")
             : included.Length == 0 ? Text("NoCombinedFinds") : "";
@@ -147,20 +149,53 @@ public partial class MainWindow
             || long.TryParse(text.Trim(), NumberStyles.None, CultureInfo.InvariantCulture, out count);
     }
 
-    private static string FormatOdds(double logDenominator, CultureInfo culture)
+    private void ShowLuckComparison(double? logDenominator)
     {
-        var logTen = Math.Log(10);
-        var exponent = Math.Floor(logDenominator / logTen);
-        if (exponent >= 9)
+        var assumption = Text("CombinedAssumption");
+        var fact = logDenominator is { } log ? LuckFacts.Reached(log) : null;
+        if (fact is null)
         {
-            var mantissa = Math.Exp(logDenominator - exponent * logTen);
-            var display = $"{mantissa.ToString("0.##", culture)} × 10^{exponent.ToString("N0", culture)}";
-            return UiText.Get(culture, "RoundedLuck", display);
+            LuckSummaryDescription.Text = assumption;
+            LuckSummaryDescription.ToolTip = null;
+            return;
         }
 
+        var german = _culture.TwoLetterISOLanguageName == "de";
+        var key = fact.Kind == "estimate" ? "LuckComparisonEstimate" : "LuckComparison";
+        LuckSummaryDescription.Text = Text(key, german ? fact.De : fact.En, FormatDenominator(Math.Log(fact.OneIn), _culture));
+        var condition = german ? fact.ConditionDe : fact.ConditionEn;
+        LuckSummaryDescription.ToolTip = $"{condition}\n\n{assumption}";
+    }
+
+    private static string FormatOdds(double logDenominator, CultureInfo culture)
+    {
+        var logPercent = 2 - logDenominator / Math.Log(10);
+        var percent = logPercent < -4
+            ? $"{FormatScientific(logPercent, culture)} {culture.NumberFormat.PercentSymbol}"
+            : Math.Exp(-logDenominator).ToString("0.#### %", culture);
+        return UiText.Get(culture, "RoundedLuck", FormatDenominator(logDenominator, culture), percent);
+    }
+
+    private static string FormatDenominator(double logDenominator, CultureInfo culture)
+    {
+        var log10 = logDenominator / Math.Log(10);
+        if (log10 >= 9)
+            return FormatScientific(log10, culture);
         var denominator = Math.Exp(logDenominator);
         var format = denominator < 100 ? "0.##" : "N0";
-        return UiText.Get(culture, "RoundedLuck", denominator.ToString(format, culture));
+        return denominator.ToString(format, culture);
+    }
+
+    private static string FormatScientific(double log10, CultureInfo culture)
+    {
+        var exponent = Math.Floor(log10);
+        var mantissa = Math.Round(Math.Pow(10, log10 - exponent), 2);
+        if (mantissa == 10)
+        {
+            mantissa = 1;
+            exponent++;
+        }
+        return $"{mantissa.ToString("0.##", culture)} × 10^{exponent.ToString("N0", culture)}";
     }
 
     private sealed class LuckEntry(TreasureOdds odds, Action refresh, bool isBoosted = false, double? example = null,

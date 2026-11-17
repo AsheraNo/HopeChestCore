@@ -5,13 +5,14 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
-    <Version>0.6.0</Version>
+    <Version>0.6.1</Version>
     <ApplicationIcon>Assets\HopeChestCore.ico</ApplicationIcon>
     <DefaultItemExcludes>$(DefaultItemExcludes);vendor/**</DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Assets\HopeChestCore.ico" />
     <Resource Include="Assets\HopeChestCore.gif" />
+    <Resource Include="Assets\LuckFacts.json" />
     <Resource Include="Assets\Rewards\*.png" />
     <Using Include="System" />
     <Using Include="System.Collections.Generic" />

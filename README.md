@@ -2,7 +2,7 @@
 
 HopeChestCore is a Windows app that counts chests from saved Fortnite replays after a match. It supports standard Battle Royale and Zero Build.
 
-[**Download the Windows ZIP for v0.6.0**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.6.0/HopeChestCore_v0.6.0.zip) · [Browse the v0.6.0 source](https://github.com/AsheraNo/HopeChestCore/tree/v0.6.0) · [All releases](https://github.com/AsheraNo/HopeChestCore/releases)
+[**Download the Windows ZIP for v0.6.1**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.6.1/HopeChestCore_v0.6.1.zip) · [Browse the v0.6.1 source](https://github.com/AsheraNo/HopeChestCore/tree/v0.6.1) · [All releases](https://github.com/AsheraNo/HopeChestCore/releases)
 
 ## Fair play and Fortnite access
 
@@ -43,7 +43,7 @@ Per-minute rates use replay duration. Matches with no recorded duration still co
 
 Open **Luck** from the left sidebar. Type the number of finds for each reward or click **+**. Expand **Treasure Hour** to record boosted Outfit, Pirate Shop Access, and Vehicle & Decal finds separately. Add a row for each different multiplier. HopeChestCore saves the entries locally for the selected period.
 
-Each row uses total chests for that period and estimates the chance of reaching at least the entered find count. The combined **1 in X** estimate treats the rows as independent and uses each Treasure Hour multiplier across the full chest count. It does not model the actual number of chests opened during each event.
+Each row uses total chests for that period and shows the estimated chance of reaching at least the entered find count as **1 in X** and as a percentage. The combined estimate treats the rows as independent and uses each Treasure Hour multiplier across the full chest count. It does not model the actual number of chests opened during each event. The comparison under the combined result shows the rarest benchmark reached. Hover over it to see the benchmark's assumptions.
 
 Use the flags in the bottom left to switch between English and German. HopeChestCore saves your language choice locally. The mascot appears on a transparent background and animates while the window is active.
 
