@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
-        <SolidColorBrush x:Key="Ink" Color="#EAF2FF"/>
-        <SolidColorBrush x:Key="Muted" Color="#A7BADC"/>
-        <SolidColorBrush x:Key="Focus" Color="#54DCFF"/>
-        <SolidColorBrush x:Key="Surface" Color="#101E3C"/>
-        <SolidColorBrush x:Key="Line" Color="#293E64"/>
+        <SolidColorBrush x:Key="Ink" Color="#F5F3FF"/>
+        <SolidColorBrush x:Key="Muted" Color="#BBBBD9"/>
+        <SolidColorBrush x:Key="Focus" Color="#AFA7FF"/>
+        <SolidColorBrush x:Key="Surface" Color="#29284E"/>
+        <SolidColorBrush x:Key="Line" Color="#44436C"/>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="{StaticResource Ink}"/>
         </Style>
@@ -21,7 +21,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="Frame" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                BorderThickness="1" CornerRadius="8" Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -43,14 +43,14 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#14264B" Offset="0"/>
-                        <GradientStop Color="#101E3C" Offset="1"/>
+                        <GradientStop Color="#2C2B52" Offset="0"/>
+                        <GradientStop Color="#252443" Offset="1"/>
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="CornerRadius" Value="14"/>
             <Setter Property="Padding" Value="18"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="Metric">

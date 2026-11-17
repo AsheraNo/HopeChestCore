@@ -2,9 +2,9 @@
 
 HopeChestCore ist eine Windows-App, die nach dem Match Truhen aus lokal gespeicherten Fortnite-Replays zählt. Sie unterstützt reguläres Battle Royale und Zero Build.
 
-Der Quellcode zu v0.4.0 ist auf GitHub einsehbar. Der Einstiegspunkt für den Lesezugriff auf Replays ist [`ReplayAnalysis.cs`](ReplayAnalysis.cs).
+Der Quellcode zu v0.5.0 ist auf GitHub einsehbar. Der Einstiegspunkt für den Lesezugriff auf Replays ist [`ReplayAnalysis.cs`](ReplayAnalysis.cs).
 
-[**Windows-ZIP v0.4.0 herunterladen**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.4.0/HopeChestCore_v0.4.0.zip) · [Alle Releases](https://github.com/AsheraNo/HopeChestCore/releases)
+[**Windows-ZIP v0.5.0 herunterladen**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.5.0/HopeChestCore_v0.5.0.zip) · [Alle Releases](https://github.com/AsheraNo/HopeChestCore/releases)
 
 ## Fair Play und Zugriff auf Fortnite
 
@@ -29,7 +29,9 @@ Beim Minimieren läuft HopeChestCore im Windows-Infobereich weiter. Ein Doppelkl
 2. Ein lokaler Replay-Parser zählt eigene geöffnete und zerstörte Truhen sowie die im Replay erfassten Truhen deiner Teammitglieder. Munitionskisten werden ausgelassen.
 3. HopeChestCore nutzt die Fortnite-Session-ID und einen SHA-256-Hash der Replay-Datei, um doppelte Importe zu erkennen. Kopien derselben Aufnahme zählen als ein Match. Beim Update auf v0.4.0 werden vorhandene Einträge mit derselben Session-ID zusammengeführt.
 
-Das Dashboard zeigt eigene Truhen, Truhen der Teammitglieder, die Gesamtsumme und die Zahl der erfassten Matches. Für deine eigenen Truhen und die Gesamtsumme gibt es Durchschnittswerte pro Match und pro Minute sowie Diagramme für die letzten 20 Matches. Beide Diagramme lassen sich gemeinsam zwischen den beiden Ansichten umschalten.
+Das Dashboard zeigt eigene Truhen, Truhen der Teammitglieder, die Gesamtsumme und die Zahl der erfassten Matches. Das Vergleichsdiagramm zeigt eigene Truhen und die Gesamtsumme für die letzten 20 Matches. Es lässt sich zwischen Truhen pro Match und pro Minute umschalten und zeigt beide Durchschnittswerte.
+
+Unter **Drop-Chancen** siehst du die geschätzte Wahrscheinlichkeit für mindestens einen Treffer beim wöchentlichen Goldenen Outfit (1 zu 1.562.500) und beim Zugang zum Piratenshop (1 zu 137.500). Die Berechnung verwendet **Truhen gesamt** im gewählten Zeitraum. Dazu zählen deine geöffneten und zerstörten Truhen sowie die im Replay erfassten Teamtruhen. Die Schätzung nimmt für jede gezählte Truhe unabhängig dieselbe Basisquote an. Event-Boni und Loot-Zeiträume sind nicht eingerechnet.
 
 Der Filter **Zeitraum** gilt für das gesamte Dashboard samt Match-Verlauf. Du kannst zwischen **Heute**, **Alle Tage** und einem Datum aus dem Verlauf wählen. Maßgeblich ist der lokale Kalendertag des Matchstarts.
 

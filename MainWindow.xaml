@@ -1,20 +1,21 @@
 <Window x:Class="HopeChestCore.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="HopeChestCore" Icon="Assets/HopeChestCore.ico" Width="1190" Height="790" MinWidth="1000" MinHeight="720"
+        Title="HopeChestCore" Icon="Assets/HopeChestCore.ico" Width="1320" Height="820" MinWidth="1080" MinHeight="720"
         FontFamily="Segoe UI" Language="de-DE" WindowStartupLocation="CenterScreen" UseLayoutRounding="True">
     <Window.Background>
         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-            <GradientStop Color="#080F21" Offset="0"/>
-            <GradientStop Color="#101F42" Offset="1"/>
+            <GradientStop Color="#191831" Offset="0"/>
+            <GradientStop Color="#34335E" Offset="1"/>
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
-        <SolidColorBrush x:Key="Cyan" Color="#42E7FF"/>
-        <SolidColorBrush x:Key="Violet" Color="#C193FF"/>
-        <LinearGradientBrush x:Key="ActionGradient" StartPoint="0,0" EndPoint="1,0">
-            <GradientStop Color="#50E4FF"/>
-            <GradientStop Color="#BE9AFF" Offset="1"/>
+        <SolidColorBrush x:Key="Periwinkle" Color="#AFA7FF"/>
+        <SolidColorBrush x:Key="Rose" Color="#F6AADC"/>
+        <SolidColorBrush x:Key="Gold" Color="#FFD991"/>
+        <LinearGradientBrush x:Key="LeadMetric" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#5550A1"/>
+            <GradientStop Color="#39376F" Offset="1"/>
         </LinearGradientBrush>
         <Style TargetType="TextBlock" x:Key="MetricLabel">
             <Setter Property="Foreground" Value="{StaticResource Muted}"/>
@@ -32,12 +33,32 @@
         </Style>
         <Style TargetType="RadioButton">
             <Setter Property="Foreground" Value="{StaticResource Ink}"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="Toggle" CornerRadius="7" Padding="9,5" Background="Transparent"
+                                BorderBrush="Transparent" BorderThickness="1">
+                            <ContentPresenter RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Toggle" Property="Background" Value="#38365F"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Toggle" Property="Background" Value="#4B457C"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="Toggle" Property="BorderBrush" Value="{StaticResource Focus}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
-    <Grid Margin="16">
-        <Grid.ColumnDefinitions><ColumnDefinition Width="181"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-        <Border Style="{StaticResource Card}" Margin="0,0,12,0" Padding="12">
+    <Grid Margin="18">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="174"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+        <Border Style="{StaticResource Card}" Margin="0,0,14,0" Padding="10" Background="#242344">
             <DockPanel>
                 <StackPanel DockPanel.Dock="Top">
                     <StackPanel Orientation="Horizontal" Margin="0,3,0,25">
@@ -48,13 +69,13 @@
                     <Button Content="Replay-Ordner" Click="ChooseFolder" HorizontalAlignment="Stretch" Margin="0,0,0,7"/>
                     <Button x:Name="ScanButton" Content="Jetzt prüfen" Click="ScanNow" HorizontalAlignment="Stretch"/>
                     <TextBlock Text="STATISTIK" Style="{StaticResource MetricLabel}" Margin="0,26,0,8"/>
-                    <Button x:Name="ResetButton" Content="Statistik zurücksetzen" Click="ResetStatistics" HorizontalAlignment="Stretch"
+                    <Button x:Name="ResetButton" Content="Statistik zurücksetzen" Click="ResetStatistics" HorizontalAlignment="Stretch" Padding="5,8"
                             AutomationProperties.Name="Statistik zurücksetzen"/>
                 </StackPanel>
-                <Border DockPanel.Dock="Bottom" Style="{StaticResource Card}" Background="#0C1732" Padding="9">
+                <Border DockPanel.Dock="Bottom" Style="{StaticResource Card}" Background="#201E3A" Padding="9">
                     <StackPanel>
                         <TextBlock Text="IMPORTSTATUS" Style="{StaticResource MetricLabel}" Margin="0,0,0,6"/>
-                        <TextBlock x:Name="Status" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" FontSize="11"/>
+                        <TextBlock x:Name="Status" Foreground="{StaticResource Periwinkle}" TextWrapping="Wrap" FontSize="11"/>
                         <TextBlock x:Name="Folder" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Muted}" FontSize="10" Margin="0,6,0,0"/>
                     </StackPanel>
                 </Border>
@@ -75,12 +96,12 @@
                                             </Border>
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter TargetName="DayRow" Property="Background" Value="#192E53"/>
+                                                    <Setter TargetName="DayRow" Property="Background" Value="#38365F"/>
                                                 </Trigger>
                                                 <Trigger Property="IsSelected" Value="True">
-                                                    <Setter TargetName="DayRow" Property="Background" Value="#1B365B"/>
-                                                    <Setter TargetName="DayRow" Property="BorderBrush" Value="#335C85"/>
-                                                    <Setter Property="Foreground" Value="{StaticResource Cyan}"/>
+                                                    <Setter TargetName="DayRow" Property="Background" Value="#474279"/>
+                                                    <Setter TargetName="DayRow" Property="BorderBrush" Value="#68609F"/>
+                                                    <Setter Property="Foreground" Value="{StaticResource Periwinkle}"/>
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -94,34 +115,43 @@
         </Border>
 
         <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="236"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1.3*" MinHeight="235"/>
+                <RowDefinition Height="*" MinHeight="132"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Border Style="{StaticResource Card}" Padding="15,9" Margin="0,0,0,10">
+            <Border Grid.ColumnSpan="2" Padding="2,1,2,3" Margin="0,0,0,14">
                 <DockPanel>
-                    <TextBlock x:Name="Period" DockPanel.Dock="Right" Foreground="{StaticResource Muted}" VerticalAlignment="Center"/>
+                    <Border DockPanel.Dock="Right" Background="#302D56" CornerRadius="9" Padding="12,6" VerticalAlignment="Center">
+                        <TextBlock x:Name="Period"/>
+                    </Border>
                     <StackPanel>
-                        <TextBlock Text="Truhenstatistik" FontSize="21" FontWeight="SemiBold"/>
+                        <TextBlock Text="Truhenstatistik" FontSize="27" FontWeight="SemiBold"/>
                         <TextBlock Text="Fortnite · Battle Royale &amp; Zero Build" Style="{StaticResource MetricLabel}"/>
                     </StackPanel>
                 </DockPanel>
             </Border>
 
-            <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,-9,10">
-                <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" BorderBrush="#2B6186"
+            <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,3,12">
+                <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" BorderBrush="#6A64B2" Background="{StaticResource LeadMetric}"
                         ToolTip="Deine Truhen plus die im Replay erfassten Truhen deiner Teammates.">
                     <StackPanel>
-                        <TextBlock Text="Truhen gesamt" Style="{StaticResource MetricLabel}"/>
-                        <TextBlock x:Name="TotalChests" Style="{StaticResource MetricValue}" Foreground="{StaticResource Cyan}"/>
+                        <TextBlock Text="Truhen gesamt" Style="{StaticResource MetricLabel}" Foreground="{StaticResource Ink}"/>
+                        <TextBlock x:Name="TotalChests" Style="{StaticResource MetricValue}"/>
                     </StackPanel>
                 </Border>
-                <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" BorderBrush="#534183"
+                <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" BorderBrush="#514773"
                         ToolTip="Deine geöffneten und zerstörten Truhen.">
                     <StackPanel>
                         <TextBlock Text="Eigene Truhen" Style="{StaticResource MetricLabel}"/>
-                        <TextBlock x:Name="OwnChests" Style="{StaticResource MetricValue}" Foreground="{StaticResource Violet}"/>
+                        <TextBlock x:Name="OwnChests" Style="{StaticResource MetricValue}" Foreground="{StaticResource Rose}"/>
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" ToolTip="Truhen deiner Teammates, soweit sie im Replay erfasst wurden.">
@@ -138,59 +168,62 @@
                 </Border>
             </UniformGrid>
 
-            <DockPanel Grid.Row="2" Margin="3,0,3,6">
-                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                    <TextBlock x:Name="ChartRange" Style="{StaticResource MetricLabel}" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <RadioButton GroupName="ChartMetric" IsChecked="True" Content="Truhen / Match" Click="ChangeChartMetric" Margin="0,0,12,0"/>
-                    <RadioButton x:Name="ShowMinuteCharts" GroupName="ChartMetric" Content="Truhen / Minute" Click="ChangeChartMetric"/>
+            <Border Grid.Row="2" Style="{StaticResource Card}" Padding="14,12" Margin="0,0,12,12">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="0,0,0,9">
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                            <RadioButton GroupName="ChartMetric" IsChecked="True" Content="Truhen / Match" Click="ChangeChartMetric" Margin="0,0,3,0"/>
+                            <RadioButton x:Name="ShowMinuteCharts" GroupName="ChartMetric" Content="Truhen / Minute" Click="ChangeChartMetric"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Truhenverlauf" FontSize="17" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="ChartRange" Style="{StaticResource MetricLabel}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <UniformGrid DockPanel.Dock="Bottom" Columns="2" Margin="0,7,0,0">
+                        <StackPanel>
+                            <TextBlock Text="●  Truhen gesamt" Foreground="{StaticResource Periwinkle}" FontWeight="SemiBold"/>
+                            <TextBlock Style="{StaticResource MetricLabel}" Margin="0,2,0,0"><Run Text="Ø "/><Run x:Name="TotalPerMatch"/><Run Text=" / Match  ·  "/><Run x:Name="TotalPerMinute"/><Run Text=" / Min."/></TextBlock>
+                        </StackPanel>
+                        <StackPanel Margin="6,0,0,0">
+                            <TextBlock Text="●  Eigene Truhen" Foreground="{StaticResource Rose}" FontWeight="SemiBold"/>
+                            <TextBlock Style="{StaticResource MetricLabel}" Margin="0,2,0,0"><Run Text="Ø "/><Run x:Name="OwnPerMatch"/><Run Text=" / Match  ·  "/><Run x:Name="OwnPerMinute"/><Run Text=" / Min."/></TextBlock>
+                        </StackPanel>
+                    </UniformGrid>
+                    <Grid>
+                        <Canvas x:Name="ChestChart" SizeChanged="ChartResized" ClipToBounds="True"
+                                AutomationProperties.Name="Verlauf der gesamten und eigenen Truhen"/>
+                        <TextBlock x:Name="ChartEmpty" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource Muted}"/>
+                    </Grid>
+                </DockPanel>
+            </Border>
+
+            <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource Card}" Padding="13" Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="Drop-Chancen" FontSize="17" FontWeight="SemiBold"/>
+                    <TextBlock Text="Chance auf mindestens einen Treffer" Style="{StaticResource MetricLabel}" TextWrapping="Wrap" Margin="0,4,0,3"/>
+                    <TextBlock x:Name="ChanceChestCount" Style="{StaticResource MetricLabel}" Margin="0,0,0,12"
+                               ToolTip="Deine geöffneten und zerstörten Truhen plus die im Replay erfassten Teamtruhen."/>
+                    <Border Style="{StaticResource Card}" Padding="10,8" Margin="0,0,0,8" Background="#393359" BorderBrush="#585073">
+                        <StackPanel>
+                            <TextBlock Text="Wöchentliches Goldenes Outfit" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="OutfitChance" Style="{StaticResource RateValue}" Foreground="{StaticResource Gold}"/>
+                            <TextBlock x:Name="OutfitBaseOdds" Style="{StaticResource MetricLabel}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource Card}" Padding="10,8" Background="#383463" BorderBrush="#544F81">
+                        <StackPanel>
+                            <TextBlock Text="Zugang zum Piratenshop" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="PirateShopChance" Style="{StaticResource RateValue}" Foreground="{StaticResource Periwinkle}"/>
+                            <TextBlock x:Name="PirateShopBaseOdds" Style="{StaticResource MetricLabel}"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBlock Text="Schätzung mit festen Basisquoten. Event-Boni und Loot-Zeiträume sind nicht eingerechnet."
+                               Style="{StaticResource MetricLabel}" TextWrapping="Wrap" Margin="0,10,0,0"/>
                 </StackPanel>
-                <TextBlock Text="Verläufe" FontSize="15" FontWeight="SemiBold"/>
-            </DockPanel>
+            </Border>
 
-            <UniformGrid Grid.Row="3" Columns="2" Margin="0,0,-10,10">
-                <Border Style="{StaticResource Card}" Padding="12,10,12,7" Margin="0,0,10,0">
-                    <StackPanel>
-                        <TextBlock Text="Truhen gesamt" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource Cyan}"/>
-                        <UniformGrid Columns="2" Margin="0,7,0,8">
-                            <StackPanel>
-                                <TextBlock Text="Ø Truhen / Match" Style="{StaticResource MetricLabel}"/>
-                                <TextBlock x:Name="TotalPerMatch" Style="{StaticResource RateValue}"/>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="Ø Truhen / Min." Style="{StaticResource MetricLabel}"/>
-                                <TextBlock x:Name="TotalPerMinute" Style="{StaticResource RateValue}"/>
-                            </StackPanel>
-                        </UniformGrid>
-                        <Grid Height="111">
-                            <Canvas x:Name="TotalChart" SizeChanged="ChartResized" ClipToBounds="True"
-                                    AutomationProperties.Name="Verlauf der Gesamttruhen"/>
-                            <TextBlock x:Name="TotalChartEmpty" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource Muted}"/>
-                        </Grid>
-                    </StackPanel>
-                </Border>
-                <Border Style="{StaticResource Card}" Padding="12,10,12,7" Margin="0,0,10,0">
-                    <StackPanel>
-                        <TextBlock Text="Eigene Truhen" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource Violet}"/>
-                        <UniformGrid Columns="2" Margin="0,7,0,8">
-                            <StackPanel>
-                                <TextBlock Text="Ø Truhen / Match" Style="{StaticResource MetricLabel}"/>
-                                <TextBlock x:Name="OwnPerMatch" Style="{StaticResource RateValue}"/>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="Ø Truhen / Min." Style="{StaticResource MetricLabel}"/>
-                                <TextBlock x:Name="OwnPerMinute" Style="{StaticResource RateValue}"/>
-                            </StackPanel>
-                        </UniformGrid>
-                        <Grid Height="111">
-                            <Canvas x:Name="OwnChart" SizeChanged="ChartResized" ClipToBounds="True"
-                                    AutomationProperties.Name="Verlauf der eigenen Truhen"/>
-                            <TextBlock x:Name="OwnChartEmpty" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource Muted}"/>
-                        </Grid>
-                    </StackPanel>
-                </Border>
-            </UniformGrid>
-
-            <Border Grid.Row="4" Style="{StaticResource Card}" Padding="0" ClipToBounds="True">
+            <Border Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource Card}" Padding="0,0,0,7" ClipToBounds="True">
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="13,8">
                         <TextBlock x:Name="DurationHint" DockPanel.Dock="Right" Style="{StaticResource MetricLabel}" VerticalAlignment="Center"/>
@@ -201,7 +234,7 @@
                                   ScrollViewer.HorizontalScrollBarVisibility="Auto">
                             <ListView.Resources>
                                 <Style TargetType="GridViewColumnHeader">
-                                    <Setter Property="Background" Value="#12294D"/>
+                                    <Setter Property="Background" Value="#32305B"/>
                                     <Setter Property="Foreground" Value="{StaticResource Ink}"/>
                                     <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
                                     <Setter Property="Padding" Value="5,6"/>
@@ -233,7 +266,7 @@
                     </Grid>
                 </DockPanel>
             </Border>
-            <Expander Grid.Row="5" x:Name="IssuePanel" Foreground="{StaticResource Ink}" Visibility="Collapsed" Margin="0,6,0,0">
+            <Expander Grid.Row="4" Grid.ColumnSpan="2" x:Name="IssuePanel" Foreground="{StaticResource Ink}" Visibility="Collapsed" Margin="0,6,0,0">
                 <ListBox x:Name="Issues" MaxHeight="50" Background="{StaticResource Surface}" Foreground="{StaticResource Ink}"/>
             </Expander>
         </Grid>

@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using ChestCounter;
 using Forms = System.Windows.Forms;
 
 namespace HopeChestCore;
@@ -9,6 +10,8 @@ namespace HopeChestCore;
 public partial class MainWindow : Window
 {
     private static readonly CultureInfo German = CultureInfo.GetCultureInfo("de-DE");
+    private static readonly int OutfitOneIn = TreasureCatalog.Odds.Single(odds => odds.Kind == TreasureCatalog.GoldOutfit).OneIn;
+    private static readonly int PirateShopOneIn = TreasureCatalog.Odds.Single(odds => odds.Kind == TreasureCatalog.PirateShop).OneIn;
     private readonly ReplayStore _store;
     private readonly ReplayMonitor _monitor;
     private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(12) };
@@ -32,6 +35,8 @@ public partial class MainWindow : Window
         _folder = store.GetFolder() ?? Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FortniteGame", "Saved", "Demos");
         InitializeComponent();
+        OutfitBaseOdds.Text = $"1 : {OutfitOneIn.ToString("N0", German)} pro Truhe";
+        PirateShopBaseOdds.Text = $"1 : {PirateShopOneIn.ToString("N0", German)} pro Truhe";
         _menu.Items.Add("Öffnen", null, (_, _) => RestoreWindow());
         _menu.Items.Add("Jetzt prüfen", null, async (_, _) => await Scan(true));
         _menu.Items.Add("Beenden", null, (_, _) => Close());
@@ -216,10 +221,14 @@ public partial class MainWindow : Window
         var timed = rows.Where(item => item.DurationSeconds is > 0).ToArray();
         var seconds = timed.Sum(item => (long)item.DurationSeconds!.Value);
 
-        TotalChests.Text = total.ToString("N0", German);
+        var totalLabel = total.ToString("N0", German);
+        TotalChests.Text = totalLabel;
         OwnChests.Text = own.ToString("N0", German);
         Matches.Text = rows.Count.ToString("N0", German);
         Squad.Text = team.ToString("N0", German);
+        ChanceChestCount.Text = $"{totalLabel} Truhen gesamt";
+        OutfitChance.Text = FormatChance(OutfitOneIn, total);
+        PirateShopChance.Text = FormatChance(PirateShopOneIn, total);
         TotalPerMatch.Text = FormatRate(total, rows.Count, "N1");
         OwnPerMatch.Text = FormatRate(own, rows.Count, "N1");
         TotalPerMinute.Text = FormatRate(timed.Sum(item => item.TotalChests) * 60.0, seconds, "N2");
@@ -240,4 +249,13 @@ public partial class MainWindow : Window
 
     private static string FormatRate(double chests, long duration, string format) =>
         duration > 0 ? (chests / duration).ToString(format, German) : "–";
+
+    private static string FormatChance(int oneIn, long chests)
+    {
+        var chance = TreasureCatalog.AtLeastOnce(oneIn, chests);
+        if (chance >= 0.9999995)
+            return "< 100 %";
+
+        return chance.ToString(chests == 0 ? "P0" : "P4", German);
+    }
 }
