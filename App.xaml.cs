@@ -19,11 +19,11 @@ public partial class App : Application
             }
             catch (IOException ex) when ((ex.HResult & 0xffff) is 2 or 3 or 32 or 33)
             {
-                result = new("pending", "Replay-Datei wird noch von Fortnite verarbeitet.");
+                result = new("pending", "RecordingPending");
             }
             catch (Exception ex)
             {
-                result = new("error", "Replay konnte nicht gelesen werden: " + ex.Message);
+                result = new("error", "ReplayReadError", ex.Message);
             }
 
             File.WriteAllText(output, JsonSerializer.Serialize(result));
@@ -36,10 +36,11 @@ public partial class App : Application
             : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HopeChestCore");
         var directoryKey = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
             System.Text.Encoding.UTF8.GetBytes(dataRoot.ToUpperInvariant())));
+        var culture = UiText.For(null);
         _mutex = new Mutex(true, @"Local\HopeChestCore-" + directoryKey, out var first);
         if (!first)
         {
-            MessageBox.Show("HopeChestCore läuft bereits. Das Fenster lässt sich über das Symbol im Infobereich öffnen.", "HopeChestCore");
+            MessageBox.Show(UiText.Get(culture, "AlreadyOpen"), "HopeChestCore");
             Shutdown();
             return;
         }
@@ -52,7 +53,7 @@ public partial class App : Application
         }
         catch (Exception ex)
         {
-            MessageBox.Show("HopeChestCore konnte nicht gestartet werden.\n\n" + ex.Message, "HopeChestCore", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(UiText.Get(culture, "StartupError", ex.Message), "HopeChestCore", MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
         }
     }

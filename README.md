@@ -4,7 +4,7 @@ HopeChestCore is a Windows app that counts chests from saved Fortnite replays af
 
 [**Download the Windows ZIP for v0.5.0**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.5.0/HopeChestCore_v0.5.0.zip) · [Browse the v0.5.0 source](https://github.com/AsheraNo/HopeChestCore/tree/v0.5.0) · [All releases](https://github.com/AsheraNo/HopeChestCore/releases)
 
-The v0.5.0 download has a German interface.
+The v0.5.0 download has a German interface. Build the current source for the Luck calculator, Treasure Hour entries, the English interface, and the animated mascot.
 
 ## Fair play and Fortnite access
 
@@ -14,7 +14,7 @@ The replay file is opened in [`ReplayAnalysis.cs`](ReplayAnalysis.cs).
 
 ## Privacy
 
-HopeChestCore processes replays offline on your PC. It sends no replays, statistics, or telemetry to the developer or any third party. Match statistics, including the player name from the replay, import records, and your chosen replay folder are stored in a local SQLite database at `%LOCALAPPDATA%\HopeChestCore\history.db`. The app deletes the temporary analysis output after processing it.
+HopeChestCore processes replays offline on your PC. It sends no replays, statistics, or telemetry to the developer or any third party. Match statistics, including the player name from the replay, import records, your chosen replay folder, language preference, and Luck entries are stored in a local SQLite database at `%LOCALAPPDATA%\HopeChestCore\history.db`. The app deletes the temporary analysis output after processing it.
 
 ## Quick start
 
@@ -39,7 +39,15 @@ The period filter applies to the dashboard and match history. View all days, tod
 
 Per-minute rates use replay duration. Matches with no recorded duration still count towards totals and per-match averages. HopeChestCore can fill in the duration if the replay is still available.
 
-**Reset statistics** clears saved matches and import records from the app's local database. Counting resumes with matches that start after the reset.
+**Reset statistics** clears saved matches, import records, and Luck entries from the app's local database. Counting resumes with matches that start after the reset.
+
+## Luck calculator and language
+
+In the development build, open **Luck** from the left sidebar. Type the number of finds for each reward or click **+**. Expand **Treasure Hour** to record boosted Outfit, Pirate Shop Access, and Vehicle & Decal finds separately. Add a row for each different multiplier. HopeChestCore saves the entries locally for the selected period.
+
+Each row uses total chests for that period and estimates the chance of reaching at least the entered find count. The combined **1 in X** estimate treats the rows as independent and uses each Treasure Hour multiplier across the full chest count. It does not model the actual number of chests opened during each event.
+
+Use the flags in the bottom left to switch between English and German. HopeChestCore saves your language choice locally. The mascot appears on a transparent background and animates while the window is active.
 
 ## Disclaimer
 

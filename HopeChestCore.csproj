@@ -11,6 +11,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Assets\HopeChestCore.ico" />
+    <Resource Include="Assets\HopeChestCore.gif" />
+    <Resource Include="Assets\Rewards\*.png" />
     <Using Include="System" />
     <Using Include="System.Collections.Generic" />
     <Using Include="System.IO" />

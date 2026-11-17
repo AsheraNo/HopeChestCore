@@ -3,11 +3,13 @@ using System.Text.Json;
 
 namespace HopeChestCore;
 
+internal sealed record ReplayIssue(string File, string MessageKey, string? Detail);
+
 internal sealed class ReplayMonitor(ReplayStore store)
 {
-    private readonly Dictionary<string, string> _blocked = new();
+    private readonly Dictionary<string, ReplayIssue> _blocked = new();
 
-    public async Task<(int Files, int Pending, List<string> Issues)> Scan(string folder, bool retry, CancellationToken token)
+    public async Task<(int Files, int Pending, List<ReplayIssue> Issues)> Scan(string folder, bool retry, CancellationToken token)
     {
         if (retry)
             _blocked.Clear();
@@ -45,7 +47,7 @@ internal sealed class ReplayMonitor(ReplayStore store)
             if (result.Match is { } match)
                 store.Save(key, match, result.ReplayHash);
             else
-                _blocked[key] = file.Name + " · " + result.Message;
+                _blocked[key] = new(file.Name, result.MessageKey, result.Detail);
         }
 
         foreach (var key in _blocked.Keys.Where(key => !active.Contains(key)).ToArray())
@@ -75,7 +77,9 @@ internal sealed class ReplayMonitor(ReplayStore store)
             start.ArgumentList.Add("--analyze-replay");
             start.ArgumentList.Add(replay);
             start.ArgumentList.Add(output);
-            using var worker = Process.Start(start) ?? throw new InvalidOperationException("Replay-Analyse konnte nicht starten.");
+            using var worker = Process.Start(start);
+            if (worker is null)
+                return new("error", "ParserStart");
             using var timeout = CancellationTokenSource.CreateLinkedTokenSource(token);
             timeout.CancelAfter(TimeSpan.FromMinutes(2));
             try
@@ -88,14 +92,14 @@ internal sealed class ReplayMonitor(ReplayStore store)
                 catch (InvalidOperationException) { }
                 await worker.WaitForExitAsync();
                 token.ThrowIfCancellationRequested();
-                return new("error", "Zeitlimit für die Replay-Analyse erreicht.");
+                return new("error", "ParserTimeout");
             }
 
             if (worker.ExitCode != 0 || new FileInfo(output).Length == 0)
-                return new("error", "Der Replay-Parser wurde unerwartet beendet.");
+                return new("error", "ParserExit");
 
             return JsonSerializer.Deserialize<AnalysisResult>(await File.ReadAllTextAsync(output, token))
-                ?? new("error", "Der Replay-Parser lieferte kein Ergebnis.");
+                ?? new("error", "ParserEmpty");
         }
         finally
         {

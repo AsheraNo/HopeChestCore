@@ -61,20 +61,29 @@ internal sealed class ReplayStore
         migration.Commit();
     }
 
-    public string? GetFolder()
+    public string? GetFolder() => GetSetting("replay_folder");
+    public void SetFolder(string path) => SetSetting("replay_folder", path);
+    public string? GetLanguage() => GetSetting("language");
+    public void SetLanguage(string code) => SetSetting("language", code);
+    public string? GetLuck(string period) => GetSetting("luck:" + period);
+    public void SetLuck(string period, string data) => SetSetting("luck:" + period, data);
+
+    private string? GetSetting(string name)
     {
         using var connection = Open();
         using var command = connection.CreateCommand();
-        command.CommandText = "SELECT value FROM settings WHERE name = 'replay_folder'";
+        command.CommandText = "SELECT value FROM settings WHERE name = $name";
+        command.Parameters.AddWithValue("$name", name);
         return command.ExecuteScalar() as string;
     }
 
-    public void SetFolder(string path)
+    private void SetSetting(string name, string value)
     {
         using var connection = Open();
         using var command = connection.CreateCommand();
-        command.CommandText = "INSERT OR REPLACE INTO settings VALUES ('replay_folder', $path)";
-        command.Parameters.AddWithValue("$path", path);
+        command.CommandText = "INSERT OR REPLACE INTO settings VALUES ($name, $value)";
+        command.Parameters.AddWithValue("$name", name);
+        command.Parameters.AddWithValue("$value", value);
         command.ExecuteNonQuery();
     }
 
@@ -144,6 +153,7 @@ internal sealed class ReplayStore
         command.CommandText = """
             DELETE FROM matches;
             DELETE FROM scanned_files;
+            DELETE FROM settings WHERE name LIKE 'luck:%';
             INSERT OR REPLACE INTO settings VALUES ('history_reset_at', $resetAt);
             """;
         command.Parameters.AddWithValue("$resetAt", ToUtcText(resetAt));

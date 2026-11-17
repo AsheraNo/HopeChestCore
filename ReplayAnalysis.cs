@@ -11,25 +11,28 @@ internal sealed record MatchSummary(string Key, DateTimeOffset PlayedAt, string 
     public double? OwnPerMinute => DurationSeconds is > 0 ? OwnChests * 60.0 / DurationSeconds : null;
     public double? TotalPerMinute => DurationSeconds is > 0 ? TotalChests * 60.0 / DurationSeconds : null;
     public string DurationLabel => DurationSeconds is > 0 ? TimeSpan.FromSeconds(DurationSeconds.Value).ToString(@"m\:ss") : "–";
-    public string Note => VehicleEventsMissing ? "Fahrzeugereignisse fehlen" : "";
 }
 
-internal sealed record AnalysisResult(string State, string Message, MatchSummary? Match = null, string? ReplayHash = null);
+internal sealed record AnalysisResult(string State, string MessageKey, string? Detail = null,
+    MatchSummary? Match = null, string? ReplayHash = null);
 
 internal static class ReplayAnalysis
 {
+    private enum HeaderStatus { Finished, RecordingPending, InvalidHeader, UnknownHeader }
+
     public static AnalysisResult Read(string path)
     {
         using var replay = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read | FileShare.Delete);
-        if (!IsFinished(replay))
-            return new("pending", "Aufnahme wartet auf Abschluss durch Fortnite.");
+        var header = ReadHeader(replay);
+        if (header != HeaderStatus.Finished)
+            return new(header == HeaderStatus.RecordingPending ? "pending" : "error", header.ToString());
 
         var item = new ReplayAnalyzer().Analyze(replay, path, username: null);
         if (!item.IsReplayOwner)
-            return new("error", "Der Spieler, der das Replay aufgenommen hat, konnte nicht zugeordnet werden.");
+            return new("error", "OwnerMissing");
 
         if (item.IsCustomMatch || !GameModes.IsBattleRoyalePlaylist(item.Playlist))
-            return new("skipped", "Nicht unterstützter Modus: " + (item.Playlist ?? "unbekannt"));
+            return new("skipped", "UnsupportedMode", item.Playlist);
 
         var sourceName = Path.GetFileName(path);
         // The upstream parser uses the timestamp and filename as a fallback session ID.
@@ -51,21 +54,21 @@ internal static class ReplayAnalysis
             item.TeamChestsOpened,
             item.VehicleChestsMissing,
             item.DurationSeconds);
-        return new("counted", "", match, replayHash);
+        return new("counted", "", Match: match, ReplayHash: replayHash);
     }
 
-    private static bool IsFinished(Stream replay)
+    private static HeaderStatus ReadHeader(Stream replay)
     {
         using var header = new BinaryReader(replay, System.Text.Encoding.UTF8, leaveOpen: true);
         if (header.ReadUInt32() != 0x1CA2E27F)
-            throw new InvalidDataException("Ungültiger Replay-Dateikopf.");
+            return HeaderStatus.InvalidHeader;
 
         var version = header.ReadUInt32();
         if (version >= 7)
         {
             var versions = header.ReadInt32();
             if (versions is < 0 or > 64)
-                throw new InvalidDataException("Unbekannter Replay-Dateikopf.");
+                return HeaderStatus.UnknownHeader;
             replay.Seek(versions * 20L, SeekOrigin.Current);
         }
 
@@ -76,24 +79,24 @@ internal static class ReplayAnalysis
         if (!live)
         {
             replay.Position = 0;
-            return true;
+            return HeaderStatus.Finished;
         }
 
         // Some finished captures keep the live flag. A nonzero key is written at match end.
         if (version < 6)
-            return false;
+            return HeaderStatus.RecordingPending;
 
         header.ReadInt64();
         header.ReadUInt32();
         if (header.ReadUInt32() == 0)
-            return false;
+            return HeaderStatus.RecordingPending;
 
         var keyLength = header.ReadInt32();
         if (keyLength is <= 0 or > 256)
-            return false;
+            return HeaderStatus.RecordingPending;
 
         var key = header.ReadBytes(keyLength);
         replay.Position = 0;
-        return key.Length == keyLength && key.Any(value => value != 0);
+        return key.Length == keyLength && key.Any(value => value != 0) ? HeaderStatus.Finished : HeaderStatus.RecordingPending;
     }
 }

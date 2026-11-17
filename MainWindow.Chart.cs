@@ -22,8 +22,8 @@ public partial class MainWindow
         var perMinute = ShowMinuteCharts?.IsChecked == true;
         var total = _chartRows.Select(match => perMinute ? match.TotalPerMinute : match.TotalChests).ToArray();
         var own = _chartRows.Select(match => perMinute ? match.OwnPerMinute : match.OwnChests).ToArray();
-        var message = _chartRows.Length == 0 ? "Noch keine Matches."
-            : total.All(value => !value.HasValue) ? "Keine Replay-Dauer verfügbar." : "";
+        var message = _chartRows.Length == 0 ? Text("ChartEmpty")
+            : total.All(value => !value.HasValue) ? Text("NoDuration") : "";
         ChartEmpty.Text = message;
         ChartEmpty.Visibility = message.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
         ChestChart.Children.Clear();
@@ -47,7 +47,7 @@ public partial class MainWindow
             chart.Children.Add(new Line { X1 = left, X2 = right, Y1 = y, Y2 = y, Stroke = GridLine });
             var label = new TextBlock
             {
-                Text = (tick * step).ToString(perMinute ? "0.##" : "N0", German),
+                Text = (tick * step).ToString(perMinute ? "0.##" : "N0", _culture),
                 Foreground = muted, FontSize = 10, Width = 40, TextAlignment = TextAlignment.Right
             };
             Canvas.SetTop(label, y - 7);
@@ -66,7 +66,7 @@ public partial class MainWindow
         for (var i = 0; i < labelCount; i++)
         {
             var index = labelCount == 1 ? 0 : (int)Math.Round(i * (positions.Length - 1.0) / (labelCount - 1));
-            var label = new TextBlock { Text = _chartRows[index].PlayedAt.ToString("dd.MM.", German), Foreground = muted, FontSize = 10 };
+            var label = new TextBlock { Text = _chartRows[index].PlayedAt.ToString("M", _culture), Foreground = muted, FontSize = 10 };
             label.Measure(new System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
             Canvas.SetLeft(label, Math.Min(positions[index] - label.DesiredSize.Width / 2, chart.ActualWidth - label.DesiredSize.Width));
             Canvas.SetTop(label, bottom + 6);
@@ -75,7 +75,7 @@ public partial class MainWindow
 
         void DrawSeries(double?[] values, SolidColorBrush accent, bool fill)
         {
-            var unit = perMinute ? "Truhen / Min." : "Truhen";
+            var unit = Text(perMinute ? "UnitPerMinute" : "UnitChests");
             var format = perMinute ? "N2" : "N0";
             var points = new List<Point>();
             for (var i = 0; i < values.Length; i++)
@@ -94,7 +94,8 @@ public partial class MainWindow
                 {
                     Width = fill ? 10 : 8, Height = fill ? 10 : 8,
                     Fill = accent, Stroke = MarkerEdge, StrokeThickness = 1.5,
-                    ToolTip = $"{match.PlayedAt:dd.MM.yyyy HH:mm} · {match.Mode}\nGesamt {total[i]!.Value.ToString(format, German)} · Eigene {own[i]!.Value.ToString(format, German)} {unit}"
+                    ToolTip = Text("ChartTooltip", match.PlayedAt, match.Mode,
+                        total[i]!.Value.ToString(format, _culture), own[i]!.Value.ToString(format, _culture), unit)
                 };
                 Canvas.SetLeft(dot, point.X - dot.Width / 2);
                 Canvas.SetTop(dot, point.Y - dot.Height / 2);

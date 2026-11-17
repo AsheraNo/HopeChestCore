@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="HopeChestCore" Icon="Assets/HopeChestCore.ico" Width="1320" Height="820" MinWidth="1080" MinHeight="720"
-        FontFamily="Segoe UI" Language="de-DE" WindowStartupLocation="CenterScreen" UseLayoutRounding="True">
+        FontFamily="Segoe UI" WindowStartupLocation="CenterScreen" UseLayoutRounding="True">
     <Window.Background>
         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
             <GradientStop Color="#191831" Offset="0"/>
@@ -30,6 +30,21 @@
         </Style>
         <Style TargetType="Border" x:Key="MetricCard" BasedOn="{StaticResource Card}">
             <Setter Property="Padding" Value="14,10"/>
+        </Style>
+        <Style x:Key="LuckField" TargetType="TextBox">
+            <Setter Property="Background" Value="#201E3A"/>
+            <Setter Property="Foreground" Value="{StaticResource Ink}"/>
+            <Setter Property="CaretBrush" Value="{StaticResource Ink}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="LuckStep" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="MinHeight" Value="27"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="{StaticResource Gold}"/>
         </Style>
         <Style TargetType="RadioButton">
             <Setter Property="Foreground" Value="{StaticResource Ink}"/>
@@ -61,28 +76,56 @@
         <Border Style="{StaticResource Card}" Margin="0,0,14,0" Padding="10" Background="#242344">
             <DockPanel>
                 <StackPanel DockPanel.Dock="Top">
-                    <StackPanel Orientation="Horizontal" Margin="0,3,0,25">
-                        <Image Source="Assets/HopeChestCore.ico" Width="24" Height="24" Margin="0,0,8,0"/>
-                        <TextBlock Text="HopeChestCore" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,12">
+                        <Image x:Name="BrandAnimation" Width="37" Height="37" Stretch="Uniform" Margin="0,0,7,0"/>
+                        <TextBlock Text="HopeChestCore" FontWeight="SemiBold" FontSize="13" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <TextBlock Text="REPLAY-IMPORT" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
-                    <Button Content="Replay-Ordner" Click="ChooseFolder" HorizontalAlignment="Stretch" Margin="0,0,0,7"/>
-                    <Button x:Name="ScanButton" Content="Jetzt prüfen" Click="ScanNow" HorizontalAlignment="Stretch"/>
-                    <TextBlock Text="STATISTIK" Style="{StaticResource MetricLabel}" Margin="0,26,0,8"/>
-                    <Button x:Name="ResetButton" Content="Statistik zurücksetzen" Click="ResetStatistics" HorizontalAlignment="Stretch" Padding="5,8"
-                            AutomationProperties.Name="Statistik zurücksetzen"/>
+                    <RadioButton x:Name="DashboardTab" GroupName="Views" Content="{DynamicResource Dashboard}" IsChecked="True" Click="ChangeView" Margin="0,0,0,3"/>
+                    <RadioButton x:Name="LuckTab" GroupName="Views" Content="{DynamicResource Luck}" Click="ChangeView" Margin="0,0,0,18"/>
+                    <TextBlock Text="{DynamicResource ReplayImport}" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
+                    <Button Content="{DynamicResource ReplayFolder}" Click="ChooseFolder" HorizontalAlignment="Stretch" Margin="0,0,0,7"/>
+                    <Button x:Name="ScanButton" Content="{DynamicResource ScanNow}" Click="ScanNow" HorizontalAlignment="Stretch"/>
+                    <TextBlock Text="{DynamicResource Statistics}" Style="{StaticResource MetricLabel}" Margin="0,26,0,8"/>
+                    <Button x:Name="ResetButton" Content="{DynamicResource Reset}" Click="ResetStatistics" HorizontalAlignment="Stretch" Padding="5,8"
+                            AutomationProperties.Name="{DynamicResource Reset}"/>
                 </StackPanel>
+                <UniformGrid DockPanel.Dock="Bottom" Columns="2" Margin="0,8,0,0">
+                    <RadioButton x:Name="EnglishButton" GroupName="Languages" Tag="en-GB" Click="ChangeLanguage" ToolTip="English"
+                                 AutomationProperties.Name="English" Margin="0,0,3,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Canvas Width="18" Height="12" Background="#17336E" ClipToBounds="True" VerticalAlignment="Center">
+                                <Path Stroke="White" StrokeThickness="2.8" Data="M0,0 L18,12 M18,0 L0,12"/>
+                                <Path Stroke="#D82D44" StrokeThickness="0.9" Data="M0,0 L18,12 M18,0 L0,12"/>
+                                <Path Stroke="White" StrokeThickness="4.4" Data="M0,6 H18 M9,0 V12"/>
+                                <Path Stroke="#D82D44" StrokeThickness="2.5" Data="M0,6 H18 M9,0 V12"/>
+                            </Canvas>
+                            <TextBlock Text="EN" Margin="4,0,0,0" FontSize="11"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton x:Name="GermanButton" GroupName="Languages" Tag="de-DE" Click="ChangeLanguage" ToolTip="Deutsch"
+                                 AutomationProperties.Name="Deutsch">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Width="18" VerticalAlignment="Center">
+                                <Border Background="#141414" Height="4"/>
+                                <Border Background="#D9292D" Height="4"/>
+                                <Border Background="#FFCE57" Height="4"/>
+                            </StackPanel>
+                            <TextBlock Text="DE" Margin="4,0,0,0" FontSize="11"/>
+                        </StackPanel>
+                    </RadioButton>
+                </UniformGrid>
+
                 <Border DockPanel.Dock="Bottom" Style="{StaticResource Card}" Background="#201E3A" Padding="9">
                     <StackPanel>
-                        <TextBlock Text="IMPORTSTATUS" Style="{StaticResource MetricLabel}" Margin="0,0,0,6"/>
+                        <TextBlock Text="{DynamicResource ImportStatus}" Style="{StaticResource MetricLabel}" Margin="0,0,0,6"/>
                         <TextBlock x:Name="Status" Foreground="{StaticResource Periwinkle}" TextWrapping="Wrap" FontSize="11"/>
                         <TextBlock x:Name="Folder" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Muted}" FontSize="10" Margin="0,6,0,0"/>
                     </StackPanel>
                 </Border>
                 <DockPanel Margin="0,20,0,10">
-                    <TextBlock DockPanel.Dock="Top" Text="ZEITRAUM" Style="{StaticResource MetricLabel}" Margin="0,0,0,6"/>
+                    <TextBlock DockPanel.Dock="Top" Text="{DynamicResource PeriodLabel}" Style="{StaticResource MetricLabel}" Margin="0,0,0,6"/>
                     <ListBox x:Name="Days" DisplayMemberPath="Label" SelectionChanged="ChangeStatisticsPeriod"
-                             AutomationProperties.Name="Zeitraum" Background="Transparent" Foreground="{StaticResource Ink}"
+                             AutomationProperties.Name="{DynamicResource PeriodName}" Background="Transparent" Foreground="{StaticResource Ink}"
                              BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
@@ -114,7 +157,7 @@
             </DockPanel>
         </Border>
 
-        <Grid Grid.Column="1">
+        <Grid x:Name="DashboardPane" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="236"/>
@@ -133,7 +176,7 @@
                         <TextBlock x:Name="Period"/>
                     </Border>
                     <StackPanel>
-                        <TextBlock Text="Truhenstatistik" FontSize="27" FontWeight="SemiBold"/>
+                        <TextBlock Text="{DynamicResource ChestStats}" FontSize="27" FontWeight="SemiBold"/>
                         <TextBlock Text="Fortnite · Battle Royale &amp; Zero Build" Style="{StaticResource MetricLabel}"/>
                     </StackPanel>
                 </DockPanel>
@@ -141,28 +184,28 @@
 
             <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,3,12">
                 <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" BorderBrush="#6A64B2" Background="{StaticResource LeadMetric}"
-                        ToolTip="Deine Truhen plus die im Replay erfassten Truhen deiner Teammates.">
+                        ToolTip="{DynamicResource TotalHelp}">
                     <StackPanel>
-                        <TextBlock Text="Truhen gesamt" Style="{StaticResource MetricLabel}" Foreground="{StaticResource Ink}"/>
+                        <TextBlock Text="{DynamicResource Total}" Style="{StaticResource MetricLabel}" Foreground="{StaticResource Ink}"/>
                         <TextBlock x:Name="TotalChests" Style="{StaticResource MetricValue}"/>
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" BorderBrush="#514773"
-                        ToolTip="Deine geöffneten und zerstörten Truhen.">
+                        ToolTip="{DynamicResource OwnHelp}">
                     <StackPanel>
-                        <TextBlock Text="Eigene Truhen" Style="{StaticResource MetricLabel}"/>
+                        <TextBlock Text="{DynamicResource Own}" Style="{StaticResource MetricLabel}"/>
                         <TextBlock x:Name="OwnChests" Style="{StaticResource MetricValue}" Foreground="{StaticResource Rose}"/>
                     </StackPanel>
                 </Border>
-                <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" ToolTip="Truhen deiner Teammates, soweit sie im Replay erfasst wurden.">
+                <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0" ToolTip="{DynamicResource TeamHelp}">
                     <StackPanel>
-                        <TextBlock Text="Teammate-Truhen" Style="{StaticResource MetricLabel}"/>
+                        <TextBlock Text="{DynamicResource Team}" Style="{StaticResource MetricLabel}"/>
                         <TextBlock x:Name="Squad" Style="{StaticResource MetricValue}"/>
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource MetricCard}" Margin="0,0,9,0">
                     <StackPanel>
-                        <TextBlock Text="Erfasste Matches" Style="{StaticResource MetricLabel}"/>
+                        <TextBlock Text="{DynamicResource Matches}" Style="{StaticResource MetricLabel}"/>
                         <TextBlock x:Name="Matches" Style="{StaticResource MetricValue}"/>
                     </StackPanel>
                 </Border>
@@ -172,27 +215,27 @@
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0,0,0,9">
                         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
-                            <RadioButton GroupName="ChartMetric" IsChecked="True" Content="Truhen / Match" Click="ChangeChartMetric" Margin="0,0,3,0"/>
-                            <RadioButton x:Name="ShowMinuteCharts" GroupName="ChartMetric" Content="Truhen / Minute" Click="ChangeChartMetric"/>
+                            <RadioButton GroupName="ChartMetric" IsChecked="True" Content="{DynamicResource PerMatch}" Click="ChangeChartMetric" Margin="0,0,3,0"/>
+                            <RadioButton x:Name="ShowMinuteCharts" GroupName="ChartMetric" Content="{DynamicResource PerMinute}" Click="ChangeChartMetric"/>
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Text="Truhenverlauf" FontSize="17" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource ChartTitle}" FontSize="17" FontWeight="SemiBold"/>
                             <TextBlock x:Name="ChartRange" Style="{StaticResource MetricLabel}"/>
                         </StackPanel>
                     </DockPanel>
                     <UniformGrid DockPanel.Dock="Bottom" Columns="2" Margin="0,7,0,0">
                         <StackPanel>
-                            <TextBlock Text="●  Truhen gesamt" Foreground="{StaticResource Periwinkle}" FontWeight="SemiBold"/>
-                            <TextBlock Style="{StaticResource MetricLabel}" Margin="0,2,0,0"><Run Text="Ø "/><Run x:Name="TotalPerMatch"/><Run Text=" / Match  ·  "/><Run x:Name="TotalPerMinute"/><Run Text=" / Min."/></TextBlock>
+                            <TextBlock Text="{DynamicResource TotalLegend}" Foreground="{StaticResource Periwinkle}" FontWeight="SemiBold"/>
+                            <TextBlock Style="{StaticResource MetricLabel}" Margin="0,2,0,0"><Run Text="Ø "/><Run x:Name="TotalPerMatch"/><Run Text="{DynamicResource MatchSuffix}"/><Run x:Name="TotalPerMinute"/><Run Text="{DynamicResource MinuteSuffix}"/></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="6,0,0,0">
-                            <TextBlock Text="●  Eigene Truhen" Foreground="{StaticResource Rose}" FontWeight="SemiBold"/>
-                            <TextBlock Style="{StaticResource MetricLabel}" Margin="0,2,0,0"><Run Text="Ø "/><Run x:Name="OwnPerMatch"/><Run Text=" / Match  ·  "/><Run x:Name="OwnPerMinute"/><Run Text=" / Min."/></TextBlock>
+                            <TextBlock Text="{DynamicResource OwnLegend}" Foreground="{StaticResource Rose}" FontWeight="SemiBold"/>
+                            <TextBlock Style="{StaticResource MetricLabel}" Margin="0,2,0,0"><Run Text="Ø "/><Run x:Name="OwnPerMatch"/><Run Text="{DynamicResource MatchSuffix}"/><Run x:Name="OwnPerMinute"/><Run Text="{DynamicResource MinuteSuffix}"/></TextBlock>
                         </StackPanel>
                     </UniformGrid>
                     <Grid>
                         <Canvas x:Name="ChestChart" SizeChanged="ChartResized" ClipToBounds="True"
-                                AutomationProperties.Name="Verlauf der gesamten und eigenen Truhen"/>
+                                AutomationProperties.Name="{DynamicResource ChartAccess}"/>
                         <TextBlock x:Name="ChartEmpty" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource Muted}"/>
                     </Grid>
                 </DockPanel>
@@ -200,25 +243,25 @@
 
             <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource Card}" Padding="13" Margin="0,0,0,12">
                 <StackPanel>
-                    <TextBlock Text="Drop-Chancen" FontSize="17" FontWeight="SemiBold"/>
-                    <TextBlock Text="Chance auf mindestens einen Treffer" Style="{StaticResource MetricLabel}" TextWrapping="Wrap" Margin="0,4,0,3"/>
+                    <TextBlock Text="{DynamicResource DropOdds}" FontSize="17" FontWeight="SemiBold"/>
+                    <TextBlock Text="{DynamicResource AtLeastOne}" Style="{StaticResource MetricLabel}" TextWrapping="Wrap" Margin="0,4,0,3"/>
                     <TextBlock x:Name="ChanceChestCount" Style="{StaticResource MetricLabel}" Margin="0,0,0,12"
-                               ToolTip="Deine geöffneten und zerstörten Truhen plus die im Replay erfassten Teamtruhen."/>
+                               ToolTip="{DynamicResource TotalHelp}"/>
                     <Border Style="{StaticResource Card}" Padding="10,8" Margin="0,0,0,8" Background="#393359" BorderBrush="#585073">
                         <StackPanel>
-                            <TextBlock Text="Wöchentliches Goldenes Outfit" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                            <TextBlock Text="{DynamicResource outfit}" FontWeight="SemiBold" TextWrapping="Wrap"/>
                             <TextBlock x:Name="OutfitChance" Style="{StaticResource RateValue}" Foreground="{StaticResource Gold}"/>
                             <TextBlock x:Name="OutfitBaseOdds" Style="{StaticResource MetricLabel}"/>
                         </StackPanel>
                     </Border>
                     <Border Style="{StaticResource Card}" Padding="10,8" Background="#383463" BorderBrush="#544F81">
                         <StackPanel>
-                            <TextBlock Text="Zugang zum Piratenshop" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource pirate-shop}" FontWeight="SemiBold"/>
                             <TextBlock x:Name="PirateShopChance" Style="{StaticResource RateValue}" Foreground="{StaticResource Periwinkle}"/>
                             <TextBlock x:Name="PirateShopBaseOdds" Style="{StaticResource MetricLabel}"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock Text="Schätzung mit festen Basisquoten. Event-Boni und Loot-Zeiträume sind nicht eingerechnet."
+                    <TextBlock Text="{DynamicResource ModelNote}"
                                Style="{StaticResource MetricLabel}" TextWrapping="Wrap" Margin="0,10,0,0"/>
                 </StackPanel>
             </Border>
@@ -227,7 +270,7 @@
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="13,8">
                         <TextBlock x:Name="DurationHint" DockPanel.Dock="Right" Style="{StaticResource MetricLabel}" VerticalAlignment="Center"/>
-                        <TextBlock Text="Match-Verlauf" FontSize="15" FontWeight="SemiBold"/>
+                        <TextBlock Text="{DynamicResource HistoryTitle}" FontSize="15" FontWeight="SemiBold"/>
                     </DockPanel>
                     <Grid>
                         <ListView x:Name="History" Background="Transparent" Foreground="{StaticResource Ink}" BorderThickness="0"
@@ -248,27 +291,210 @@
                             </ListView.Resources>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Matchzeit" Width="124" DisplayMemberBinding="{Binding PlayedAt, StringFormat='dd.MM.yyyy HH:mm'}"/>
-                                    <GridViewColumn Header="Spieler" Width="108" DisplayMemberBinding="{Binding Player}"/>
-                                    <GridViewColumn Header="Modus" Width="89" DisplayMemberBinding="{Binding Mode}"/>
-                                    <GridViewColumn Header="Gesamt" Width="60" DisplayMemberBinding="{Binding TotalChests, StringFormat=N0}"/>
-                                    <GridViewColumn Header="Eigene" Width="54" DisplayMemberBinding="{Binding OwnChests, StringFormat=N0}"/>
-                                    <GridViewColumn Header="Teammates" Width="75" DisplayMemberBinding="{Binding Squad, StringFormat=N0}"/>
-                                    <GridViewColumn Header="Dauer" Width="58" DisplayMemberBinding="{Binding DurationLabel}"/>
-                                    <GridViewColumn Header="Ges. / Min." Width="76" DisplayMemberBinding="{Binding TotalPerMinute, StringFormat=N2, TargetNullValue=–}"/>
-                                    <GridViewColumn Header="Eig. / Min." Width="76" DisplayMemberBinding="{Binding OwnPerMinute, StringFormat=N2, TargetNullValue=–}"/>
-                                    <GridViewColumn Header="Hinweis" Width="168" DisplayMemberBinding="{Binding Note}"/>
+                                    <GridViewColumn Width="130"/>
+                                    <GridViewColumn Width="108">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock>
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Text" Value="{Binding Player}"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Player}" Value="Replay-Spieler">
+                                                                    <Setter Property="Text" Value="{DynamicResource ReplayPlayer}"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="89" DisplayMemberBinding="{Binding Mode}"/>
+                                    <GridViewColumn Width="60" DisplayMemberBinding="{Binding TotalChests, StringFormat=N0}"/>
+                                    <GridViewColumn Width="54" DisplayMemberBinding="{Binding OwnChests, StringFormat=N0}"/>
+                                    <GridViewColumn Width="75" DisplayMemberBinding="{Binding Squad, StringFormat=N0}"/>
+                                    <GridViewColumn Width="58" DisplayMemberBinding="{Binding DurationLabel}"/>
+                                    <GridViewColumn Width="76" DisplayMemberBinding="{Binding TotalPerMinute, StringFormat=N2, TargetNullValue=–}"/>
+                                    <GridViewColumn Width="76" DisplayMemberBinding="{Binding OwnPerMinute, StringFormat=N2, TargetNullValue=–}"/>
+                                    <GridViewColumn Width="168">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock>
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding VehicleEventsMissing}" Value="True">
+                                                                    <Setter Property="Text" Value="{DynamicResource VehicleMissing}"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
                         <TextBlock x:Name="HistoryEmpty" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   Text="Keine Matches in diesem Zeitraum." Foreground="{StaticResource Muted}"/>
+                                   Text="{DynamicResource HistoryEmpty}" Foreground="{StaticResource Muted}"/>
                     </Grid>
                 </DockPanel>
             </Border>
             <Expander Grid.Row="4" Grid.ColumnSpan="2" x:Name="IssuePanel" Foreground="{StaticResource Ink}" Visibility="Collapsed" Margin="0,6,0,0">
                 <ListBox x:Name="Issues" MaxHeight="50" Background="{StaticResource Surface}" Foreground="{StaticResource Ink}"/>
             </Expander>
+        </Grid>
+
+        <Grid x:Name="LuckPane" Grid.Column="1" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Margin="2,1,2,16">
+                <Border DockPanel.Dock="Right" Background="#302D56" CornerRadius="9" Padding="12,6" VerticalAlignment="Center" Margin="12,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Text, ElementName=Period}" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding Text, ElementName=ChanceChestCount}" Style="{StaticResource MetricLabel}"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource LuckTitle}" FontSize="27" FontWeight="SemiBold"/>
+                    <TextBlock Text="{DynamicResource LuckIntro}" Style="{StaticResource MetricLabel}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                </StackPanel>
+            </DockPanel>
+            <Border Grid.Row="1" Style="{StaticResource Card}" Padding="13">
+                <DockPanel>
+                    <Border DockPanel.Dock="Bottom" Style="{StaticResource Card}" Background="#393359" BorderBrush="#62567A"
+                            Padding="12,9" Margin="0,8,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="260"/></Grid.ColumnDefinitions>
+                            <StackPanel Margin="0,0,15,0">
+                                <TextBlock Text="{DynamicResource CombinedLuck}" FontSize="17" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{DynamicResource CombinedAssumption}" Style="{StaticResource MetricLabel}"
+                                           TextWrapping="Wrap" Margin="0,3,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock x:Name="LuckSummaryValue" FontSize="21" FontWeight="SemiBold" Foreground="{StaticResource Gold}"
+                                           TextWrapping="Wrap" TextAlignment="Right" AutomationProperties.LiveSetting="Polite"/>
+                                <TextBlock x:Name="LuckSummaryHint" Style="{StaticResource MetricLabel}" TextWrapping="Wrap" TextAlignment="Right"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="0,0,3,0">
+                            <Expander x:Name="TreasureHourToggle" Header="{DynamicResource TreasureHour}" Foreground="{StaticResource Gold}"
+                                      FontWeight="SemiBold" Margin="0,0,0,9">
+                                <Border Style="{StaticResource Card}" Background="#2D294F" Padding="10" Margin="0,7,0,0">
+                                    <StackPanel>
+                                        <TextBlock Text="{DynamicResource TreasureHourHelp}" Style="{StaticResource MetricLabel}"
+                                                   FontWeight="Normal" TextWrapping="Wrap" Margin="0,0,0,8"/>
+                                        <ItemsControl x:Name="TreasureEntries">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="0,6">
+                                                        <StackPanel>
+                                                            <DockPanel>
+                                                                <Button DockPanel.Dock="Right" Content="{DynamicResource AddBoost}" Click="AddBoost"
+                                                                        MinHeight="26" Padding="9,2"/>
+                                                                <TextBlock Text="{Binding Reward.Label}" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,6,0"/>
+                                                            </DockPanel>
+                                                            <ItemsControl ItemsSource="{Binding Rows}">
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Grid Margin="0,5,0,0">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="138"/>
+                                                                                <ColumnDefinition Width="130"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                                <ColumnDefinition Width="38"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <StackPanel>
+                                                                                <TextBlock Text="{DynamicResource TreasureFinds}" Style="{StaticResource MetricLabel}" FontWeight="Normal"/>
+                                                                                <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                                                                    <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="65"
+                                                                                             MaxLength="19" Style="{StaticResource LuckField}"
+                                                                                             AutomationProperties.Name="{DynamicResource TreasureFinds}"/>
+                                                                                    <Button Style="{StaticResource LuckStep}" Content="+" Click="AddLuckFind" Margin="4,0,0,0"
+                                                                                            AutomationProperties.Name="{DynamicResource AddTreasureFind}" ToolTip="{DynamicResource AddTreasureFind}"/>
+                                                                                </StackPanel>
+                                                                            </StackPanel>
+                                                                            <StackPanel Grid.Column="1">
+                                                                                <TextBlock Text="{DynamicResource BoostMultiplier}" Style="{StaticResource MetricLabel}" FontWeight="Normal"/>
+                                                                                <TextBox Text="{Binding Multiplier, UpdateSourceTrigger=PropertyChanged}" Width="82"
+                                                                                         MaxLength="16" HorizontalAlignment="Left" Margin="0,3,0,0" Style="{StaticResource LuckField}"
+                                                                                         AutomationProperties.Name="{DynamicResource BoostMultiplier}"/>
+                                                                            </StackPanel>
+                                                                            <TextBlock Grid.Column="2" Text="{Binding Result}" Foreground="{StaticResource Gold}"
+                                                                                       VerticalAlignment="Bottom" TextWrapping="Wrap" Margin="0,0,12,3"/>
+                                                                            <Button Grid.Column="3" Style="{StaticResource LuckStep}" Content="×" Click="RemoveBoost"
+                                                                                    VerticalAlignment="Bottom" AutomationProperties.Name="{DynamicResource RemoveBoost}"
+                                                                                    ToolTip="{DynamicResource RemoveBoost}"/>
+                                                                        </Grid>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </Border>
+                            </Expander>
+
+                            <Grid Margin="10,0,10,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.3*"/>
+                                    <ColumnDefinition Width="126"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{DynamicResource Reward}" Style="{StaticResource MetricLabel}"/>
+                                <TextBlock Grid.Column="1" Text="{DynamicResource RegularFinds}" Style="{StaticResource MetricLabel}"/>
+                                <TextBlock Grid.Column="2" Text="{DynamicResource YourLuck}" Style="{StaticResource MetricLabel}"/>
+                            </Grid>
+                            <ItemsControl x:Name="LuckEntries">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource Card}" Background="#302D55" Padding="9,5" Margin="0,0,0,5" MinHeight="59" CornerRadius="9">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1.3*"/>
+                                                    <ColumnDefinition Width="126"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <DockPanel Margin="0,0,10,0">
+                                                    <Border DockPanel.Dock="Left" Width="44" Height="44" CornerRadius="8" Background="#201E3A" Margin="0,0,10,0">
+                                                        <Image Source="{Binding Icon}" Stretch="Uniform">
+                                                            <Image.Clip><RectangleGeometry Rect="0,0,44,44" RadiusX="8" RadiusY="8"/></Image.Clip>
+                                                        </Image>
+                                                    </Border>
+                                                    <StackPanel VerticalAlignment="Center">
+                                                        <TextBlock Text="{Binding Label}" TextWrapping="Wrap" FontWeight="SemiBold"/>
+                                                        <TextBlock Text="{Binding BaseOdds}" Style="{StaticResource MetricLabel}" Margin="0,2,0,0"/>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" MaxLength="19"
+                                                             AutomationProperties.Name="{Binding Label}" ToolTip="{DynamicResource LuckInput}" Width="66"
+                                                             Style="{StaticResource LuckField}"/>
+                                                    <Button Style="{StaticResource LuckStep}" Content="+" Click="AddLuckFind" Margin="4,0,0,0"
+                                                            AutomationProperties.Name="{DynamicResource AddFind}" ToolTip="{DynamicResource AddFind}"/>
+                                                </StackPanel>
+                                                <TextBlock Grid.Column="2" Text="{Binding Result}" Foreground="{StaticResource Gold}"
+                                                           VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="SemiBold"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <TextBlock Text="{DynamicResource LuckModelNote}" Style="{StaticResource MetricLabel}"
+                                       TextWrapping="Wrap" Margin="10,4,10,0"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
         </Grid>
     </Grid>
 </Window>
