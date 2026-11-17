@@ -1,61 +1,63 @@
 # HopeChestCore
 
-HopeChestCore ist eine Windows-App, die nach dem Match Truhen aus lokal gespeicherten Fortnite-Replays zählt. Sie unterstützt reguläres Battle Royale und Zero Build.
+HopeChestCore is a Windows app that counts chests from saved Fortnite replays after a match. It supports standard Battle Royale and Zero Build.
 
-Der Quellcode zu v0.5.0 ist auf GitHub einsehbar. Der Einstiegspunkt für den Lesezugriff auf Replays ist [`ReplayAnalysis.cs`](ReplayAnalysis.cs).
+[**Download the Windows ZIP for v0.5.0**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.5.0/HopeChestCore_v0.5.0.zip) · [Browse the v0.5.0 source](https://github.com/AsheraNo/HopeChestCore/tree/v0.5.0) · [All releases](https://github.com/AsheraNo/HopeChestCore/releases)
 
-[**Windows-ZIP v0.5.0 herunterladen**](https://github.com/AsheraNo/HopeChestCore/releases/download/v0.5.0/HopeChestCore_v0.5.0.zip) · [Alle Releases](https://github.com/AsheraNo/HopeChestCore/releases)
+The v0.5.0 download has a German interface.
 
-## Fair Play und Zugriff auf Fortnite
+## Fair play and Fortnite access
 
-**HopeChestCore öffnet `.replay`-Dateien ausschließlich zum Lesen.** Die App verändert oder löscht keine Replays, Spieldateien, Fortnite-Einstellungen oder Kontodaten. Sie greift weder auf den laufenden Fortnite-Prozess noch auf dessen Speicher zu, sendet keine Eingaben ans Spiel und bietet keine Live-Spielhilfe. Ein Epic-Konto oder ein Login in der App ist nicht erforderlich.
+**HopeChestCore opens `.replay` files in read-only mode.** It does not change or delete replays, game files, Fortnite settings, or account data. It does not access the running Fortnite process or its memory, send inputs to the game, or offer live gameplay assistance. The app requires no Epic account or sign-in.
 
-## Datenschutz
+The replay file is opened in [`ReplayAnalysis.cs`](ReplayAnalysis.cs).
 
-HopeChestCore verarbeitet Replays offline auf deinem PC. Die App sendet weder Replays noch Statistiken oder Telemetriedaten an den Entwickler oder an Dritte. Matchstatistiken (unter anderem der Spielername aus dem Replay), Importinformationen und der gewählte Replay-Ordner werden in der lokalen SQLite-Datenbank unter `%LOCALAPPDATA%\HopeChestCore\history.db` gespeichert. Während der Auswertung verwendet HopeChestCore eine temporäre Ergebnisdatei und räumt sie nach der Verarbeitung auf.
+## Privacy
 
-## Schnellstart
+HopeChestCore processes replays offline on your PC. It sends no replays, statistics, or telemetry to the developer or any third party. Match statistics, including the player name from the replay, import records, and your chosen replay folder are stored in a local SQLite database at `%LOCALAPPDATA%\HopeChestCore\history.db`. The app deletes the temporary analysis output after processing it.
 
-1. Installiere die [.NET 10 Desktop Runtime für Windows x64](https://dotnet.microsoft.com/download/dotnet/10.0).
-2. Lade die ZIP-Datei aus dem Release herunter, entpacke sie vollständig und starte `HopeChestCore.exe`.
-3. Aktiviere in Fortnite unter **Einstellungen → Spiel → Replays** die Replay-Aufzeichnung.
-4. HopeChestCore importiert abgeschlossene Aufnahmen automatisch. Standardmäßig sucht die App unter `%LOCALAPPDATA%\FortniteGame\Saved\Demos`. Unter **Replay-Ordner wählen** kannst du einen anderen Ordner auswählen.
+## Quick start
 
-Beim Minimieren läuft HopeChestCore im Windows-Infobereich weiter. Ein Doppelklick aufs Symbol öffnet das Fenster. Das Schließen des Fensters beendet die App.
+1. Install the [.NET 10 Desktop Runtime for Windows x64](https://dotnet.microsoft.com/download/dotnet/10.0) if needed.
+2. Download the release ZIP, extract it completely, and run `HopeChestCore.exe`.
+3. Enable replay recording in Fortnite under **Settings → Game → Replays**.
+4. HopeChestCore imports completed replays automatically. The default folder is `%LOCALAPPDATA%\FortniteGame\Saved\Demos`. Use **Replay folder** in the app to select a different folder.
 
-## So funktioniert die Auswertung
+Minimizing sends HopeChestCore to the Windows notification area, where it continues running. Double-click its icon to reopen it. Closing the window exits the app.
 
-1. HopeChestCore prüft den Replay-Ordner alle 12 Sekunden und wartet, bis die jeweilige Aufnahme abgeschlossen ist.
-2. Ein lokaler Replay-Parser zählt eigene geöffnete und zerstörte Truhen sowie die im Replay erfassten Truhen deiner Teammitglieder. Munitionskisten werden ausgelassen.
-3. HopeChestCore nutzt die Fortnite-Session-ID und einen SHA-256-Hash der Replay-Datei, um doppelte Importe zu erkennen. Kopien derselben Aufnahme zählen als ein Match. Beim Update auf v0.4.0 werden vorhandene Einträge mit derselben Session-ID zusammengeführt.
+## How it works
 
-Das Dashboard zeigt eigene Truhen, Truhen der Teammitglieder, die Gesamtsumme und die Zahl der erfassten Matches. Das Vergleichsdiagramm zeigt eigene Truhen und die Gesamtsumme für die letzten 20 Matches. Es lässt sich zwischen Truhen pro Match und pro Minute umschalten und zeigt beide Durchschnittswerte.
+1. HopeChestCore checks the replay folder every 12 seconds and waits for recordings to finish.
+2. The local replay parser counts chests you opened or destroyed and team chests recorded in the replay. It excludes ammo boxes.
+3. A Fortnite session ID and a SHA-256 hash of the replay file identify duplicate imports. Copies of the same recording count as one match. Version 0.4.0 also merged entries that shared a session ID when upgrading an existing database.
 
-Unter **Drop-Chancen** siehst du die geschätzte Wahrscheinlichkeit für mindestens einen Treffer beim wöchentlichen Goldenen Outfit (1 zu 1.562.500) und beim Zugang zum Piratenshop (1 zu 137.500). Die Berechnung verwendet **Truhen gesamt** im gewählten Zeitraum. Dazu zählen deine geöffneten und zerstörten Truhen sowie die im Replay erfassten Teamtruhen. Die Schätzung nimmt für jede gezählte Truhe unabhängig dieselbe Basisquote an. Event-Boni und Loot-Zeiträume sind nicht eingerechnet.
+The dashboard shows your chests, team chests, the combined total, and the number of tracked matches. The comparison chart plots your chests and the total for the last 20 matches. You can switch between chests per match and per minute. The chart shows both averages.
 
-Der Filter **Zeitraum** gilt für das gesamte Dashboard samt Match-Verlauf. Du kannst zwischen **Heute**, **Alle Tage** und einem Datum aus dem Verlauf wählen. Maßgeblich ist der lokale Kalendertag des Matchstarts.
+**Drop odds** estimates the chance of finding the Weekly Golden Outfit (1 in 1,562,500 per chest) or Pirate Shop Access (1 in 137,500) at least once. It uses the dashboard's **total chests** in the selected period and assumes a fixed, independent chance for each counted chest. The model excludes event boosts and loot availability windows.
 
-Truhen pro Minute werden anhand der Replay-Dauer berechnet. Matches ohne verfügbare Dauer zählen zur Gesamtzahl und zum Durchschnitt pro Match. Falls das Replay noch vorhanden ist, kann die App die Dauer nachtragen.
+The period filter applies to the dashboard and match history. View all days, today, or a date in your history. The app uses the local date when the match started.
 
-**Statistik zurücksetzen** löscht Matches und Import-Einträge aus der lokalen Datenbank. Anschließend zählt HopeChestCore wieder ab dem Zeitpunkt des Resets.
+Per-minute rates use replay duration. Matches with no recorded duration still count towards totals and per-match averages. HopeChestCore can fill in the duration if the replay is still available.
 
-## Hinweise und Disclaimer
+**Reset statistics** clears saved matches and import records from the app's local database. Counting resumes with matches that start after the reset.
 
-HopeChestCore ist ein inoffizielles Fan-Tool und steht in keiner Verbindung zu Epic Games, Inc. Fortnite und zugehörige Marken sowie urheberrechtlich geschützte Inhalte von Epic gehören Epic Games, Inc. Alle Rechte daran bleiben Epic vorbehalten. Epic hat HopeChestCore weder genehmigt noch unterstützt. Die Nutzung erfolgt auf eigene Verantwortung. [Richtlinie von Epic Games für Fan-Inhalte](https://legal.epicgames.com/epicgames/fan-art-policy?lang=de)
+## Disclaimer
 
-Die Statistik hängt davon ab, welche Ereignisse Fortnite im Replay aufgezeichnet hat. Ereignisse außerhalb deiner Nähe können fehlen, insbesondere bei Teammitgliedern. Änderungen am Replay-Format können die Auswertung beeinträchtigen und ein Update des Parsers erfordern.
+HopeChestCore is an unofficial fan tool with no affiliation with Epic Games, Inc. Fortnite and related marks, as well as copyrighted Epic material, belong to Epic Games, Inc. Epic retains all rights to that material. Epic has neither endorsed nor approved this project. Use the app at your own risk. [Epic Games Fan Content Policy](https://legal.epicgames.com/epicgames/fan-art-policy)
 
-## Aus dem Quellcode bauen
+Statistics depend on which events Fortnite recorded. Events outside your vicinity can be missing, especially for teammates. Changes to the replay format may affect analysis and require a parser update.
 
-Führe im Projektordner mit installiertem .NET 10 SDK aus.
+## Build from source
+
+Install the .NET 10 SDK and run these commands in the project directory.
 
 ```powershell
 dotnet build -c Release
 dotnet publish -c Release -r win-x64 --self-contained false
 ```
 
-## Lizenzen und Danksagung
+## Licenses and credits
 
-Die Replay-Analyse basiert auf Fortnite-ChestCounter 1.5.1 (LED-N, MIT, Stand `1ec3636`) und dessen Fork von FortniteReplayDecompressor (Shiqan, MIT). Die MIT-Lizenztexte liegen unter [`vendor/`](vendor/).
+Replay analysis is based on Fortnite-ChestCounter 1.5.1 (LED-N, MIT, commit `1ec3636`) and its fork of FortniteReplayDecompressor (Shiqan, MIT). The MIT license notices are in [`vendor/`](vendor/).
 
-Der enthaltene OozSharp-Dekompressor übernimmt Code von Powzix unter GPL-3.0-or-later. Die kombinierte Fassung von HopeChestCore wird unter GPL-3.0-or-later bereitgestellt. Der [GPL-Lizenztext](vendor/LICENSE-OozSharp-GPL-3.0) liegt im Repository.
+The bundled OozSharp decompressor includes code by Powzix under GPL-3.0-or-later. The combined HopeChestCore distribution is provided under GPL-3.0-or-later. See the [GPL license text](vendor/LICENSE-OozSharp-GPL-3.0).
